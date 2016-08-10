@@ -1,0 +1,28 @@
+/**
+ * Created by Royal PR (Paul Burilichev) on 05-Aug-16.
+ */
+
+#developer {
+  height: 62px;
+  img {
+    display: block;
+    float: left;
+    height: inherit;
+  }
+  div {
+    float: left;
+    margin-left: 10px;
+    margin-top: 18px;
+    line-height: 24px;
+
+  }
+  .lt-ie9 &, .no-svg & {
+    background: url("/images/royal-pr-logo.png");
+    _background-image: url("/images/royal-pr-logo.gif");
+    padding-left: 50px;
+  }
+  .lt-ie9 & img, .no-svg & img {
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+}

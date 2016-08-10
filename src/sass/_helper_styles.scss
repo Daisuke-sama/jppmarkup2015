@@ -1,0 +1,36 @@
+/**
+ * Created by Royal PR (Paul Burilichev) on 08-Aug-16.
+ *
+ * HELPERS STYLES DEVENITION */
+// images
+.img-clip-4by3 {
+  @include img-clip-wrapper(74%, 5%);
+}
+
+.img-clip-16by9 {
+  @include img-clip-wrapper(56%, 0%);
+}
+
+.img-clip-1by1 {
+  @include img-clip-wrapper(50%,0%,50%);
+}
+
+//video
+.video-container {
+  position: relative;
+  overflow: hidden;
+
+  /* 16x9 Aspect Ratio */
+  &-16x9 { padding-bottom: 56.25%; }
+
+  /* 4x3 Aspect Ratio */
+  &-4x3 { padding-bottom: 75%; }
+
+  & iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,24 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 08-Aug-16.
+
+   Here: Basic layout for every page on website.
+         Contains header, footer and etc. parts.
+
+include _variables
+
+doctype html
+html(class='no-js', lang='en')
+
+    block head
+        include _component_head.pug
+
+    body
+        <!--[if lt IE 8]>
+        p(class="browserupgrade") You are using an <strong>outdated</strong> browser. Please #[a(href='http://browsehappy.com', target='_blank') upgrade your browser] to improve your experience.
+        <![endif]-->
+
+        include _component_header
+
+        block allContent
+
+        include _component_footer

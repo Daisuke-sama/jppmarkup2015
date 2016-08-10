@@ -1,0 +1,72 @@
+/* Micro mobile */
+@media only screen and (max-width: 500px) {
+  [class*="micro-mobile hidden"],
+  [class*="mobile only"]:not(.micro-mobile),
+  [class*="tablet only"]:not(.micro-mobile),
+  [class*="computer only"]:not(.micro-mobile),
+  [class*="large screen only"]:not(.micro-mobile),
+  [class*="widescreen only"]:not(.micro-mobile),
+  [class*="or lower hidden"] {
+    display: none !important;
+  }
+}
+/* Mobile */
+@media only screen and (min-width: 501px) and (max-width: 767px) {
+  [class*="micro-mobile only"]:not(.mobile),
+  [class*="mobile hidden"],
+  [class*="tablet only"]:not(.mobile),
+  [class*="computer only"]:not(.mobile),
+  [class*="large screen only"]:not(.mobile),
+  [class*="widescreen only"]:not(.mobile),
+  [class*="or lower hidden"]:not(.micro-mobile) {
+    display: none !important;
+  }
+}
+/* Tablet / iPad Portrait */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  [class*="micro-mobile only"]:not(.tablet),
+  [class*="mobile only"]:not(.tablet),
+  [class*="tablet hidden"],
+  [class*="computer only"]:not(.tablet),
+  [class*="large screen only"]:not(.tablet),
+  [class*="widescreen only"]:not(.tablet),
+  [class*="or lower hidden"]:not(.mobile):not(.micro-mobile) {
+    display: none !important;
+  }
+}
+/* Computer / Desktop / iPad Landscape */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  [class*="micro-mobile only"]:not(.computer),
+  [class*="mobile only"]:not(.computer),
+  [class*="tablet only"]:not(.computer),
+  [class*="computer hidden"],
+  [class*="large screen only"]:not(.computer),
+  [class*="widescreen only"]:not(.computer),
+  [class*="or lower hidden"]:not(.tablet):not(.mobile):not(.micro-mobile) {
+    display: none !important;
+  }
+}
+/* Large Monitor */
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+  [class*="micro-mobile only"]:not([class*="large screen"]),
+  [class*="mobile only"]:not([class*="large screen"]),
+  [class*="tablet only"]:not([class*="large screen"]),
+  [class*="computer only"]:not([class*="large screen"]),
+  [class*="large screen hidden"],
+  [class*="widescreen only"]:not([class*="large screen"]),
+  [class*="or lower hidden"]:not(.computer):not(.tablet):not(.mobile):not(.micro-mobile) {
+    display: none !important;
+  }
+}
+/* Widescreen Monitor */
+@media only screen and (min-width: 1920px) {
+  [class*="micro-mobile only"]:not([class*="widescreen"]),
+  [class*="mobile only"]:not([class*="widescreen"]),
+  [class*="tablet only"]:not([class*="widescreen"]),
+  [class*="computer only"]:not([class*="widescreen"]),
+  [class*="large screen only"]:not([class*="widescreen"]),
+  [class*="widescreen hidden"],
+  [class*="widescreen or lower hidden"] {
+    display: none !important;
+  }
+}

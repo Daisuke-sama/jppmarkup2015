@@ -1,0 +1,26 @@
+/**
+ * Created by Royal PR (Paul Burilichev) on 08-Aug-16.
+ *
+ * HELPERS MIXIN DEFENITION */
+
+/*! clipper of img to X by Y ratio */
+@mixin img-clip-wrapper($height-Y-by-percentage, $view-from-top-by-percentage: 0, $view-from-left-by-percentage: 0) {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    padding-top: $height-Y-by-percentage;
+  }
+
+  & img {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: $view-from-top-by-percentage;
+    left: $view-from-left-by-percentage;
+  }
+}
