@@ -8,4 +8,189 @@
 @import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
 
 
+// icon-font
+@include font-face('Icons', 'fonts/icons', normal, normal, $file-formats: eot woff2 woff otf svg);
 
+html {
+  font-family: $helvetica;
+  font-size: $em-base;
+  line-height: modular-scale(1);
+  background-color: $pageGreyBackground;
+  @include word-wrap(normal);
+
+
+  h1 { @extend .h1; }
+  h2 { @extend .h2; }
+  h3 { @extend .h3; }
+  h4 { @extend .h4; }
+  h5 { @extend .h5; }
+  h6 { @extend .h6; }
+
+  p {
+    margin: em($em-base) 0;
+
+  }
+
+  #{$all-text-inputs},
+  #{$all-button-inputs},
+  #{$all-buttons} {
+    border-radius: 0 !important;
+  }
+
+  a {
+    color: inherit;
+
+    @include transitionElement(text-decoration);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+header {
+  #user-menu {
+    background-color: $greyBackground;
+    color: $white;
+    z-index: 1000;
+
+    @include user-select(none);
+
+    .dropdown {
+      display: inline-block;
+      position: relative;
+      cursor: default;
+
+      .user.login {
+        z-index: 1000;
+
+        #login-top-form {
+          color: inherit;
+        }
+
+        display: none;
+        position: absolute;
+        min-width: 200%;
+        right: 0;
+        top: 100% !important;
+        text-align: left;
+        background-color: $greyBackground;
+        padding: $em-base;
+        padding-top: 0;
+        box-shadow: 5px 5px 7px $lightGreyBackground;
+        transition: width 2s;
+
+        .input {
+          margin-bottom: $marginElement;
+
+          &:last-of-type { @extend .margin-no; }
+        }
+
+        p {
+          margin: $em-base;
+        }
+
+        a.button {
+          @extend .margin-no;
+        }
+      }
+
+      &:hover .user.login {
+        display: block;
+      }
+    }
+    .buttons {
+      float: right;
+    }
+  }
+
+  #header {
+    margin-top: em($em-base);
+    padding: 0 em($paddingBlock);
+    background-color: $white;
+
+    img {
+      display: block;
+    }
+
+    .company.label {
+      b {
+        font-size: modular-scale(1.3);
+      }
+
+      .description {
+        display: inline-block;
+        position: relative;
+        margin-bottom: $em-base;
+
+          span {
+            display: block;
+            position: absolute;
+            right: 0;
+            top: -100% !important;
+            font-size: $em-base;
+          }
+      }
+    }
+
+    nav {
+      z-index: 500;
+      margin-top: $marginBlock;
+      border: none;
+      box-shadow: none;
+
+      .item {
+        border-radius: 0;
+        text-transform: uppercase;
+        color: $blueText;
+        line-height: modular-scale(1);
+
+        @include transitionElement(background-color);
+
+        &:hover {
+          background-color: $redBackground;
+          color: $white;
+        }
+
+        &.dropdown .menu {
+          border-radius: 0 !important;
+
+          & > .item {
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  padding: $paddingBlock*2 0 $paddingBlock 0;
+  background-color: $greyBackground;
+  color: $white;
+
+  .links.in.columns {
+    column-count: 3;
+
+    p { margin: 0; }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// browser upgrade
+.browserupgrade {
+  margin: 0.2em 0;
+  background: yellow;
+  color: #000;
+  padding: 0.2em 0;
+}

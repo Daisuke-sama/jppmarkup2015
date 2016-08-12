@@ -4,6 +4,46 @@
  * VARIABLE DEFENITION */
 
 // font
+$em-base: 14px;
+$em-base-tablet: $em-base + 2px;
+$em-base-mob: $em-base-tablet + 2px;
 
 
 // colors
+$hoverAmount: 20%;
+
+$pageGreyBackground: #f6f6f6;
+$greyBackground: #717372;
+$greyBackgroundHover: lighten($greyBackground, $hoverAmount);
+$lightGreyBackground: #c5c7c6;
+$lightGreyBackgroundHover: darken($lightGreyBackground, $hoverAmount);
+$blueBackground: #6b7386;
+$blueBackgroundHover: darken($blueBackground, $hoverAmount);
+$greenBackground: #4fbd4a;
+$greenBackgroundHover: darken($greenBackground, $hoverAmount);
+$redBackground: #fe4847;
+$redBackgroundHover: darken($redBackground, 20%);
+
+$blackText: #2e2e2c;
+$greyText: #939393;
+$lightGreyTextBorder: #dadcdb;
+$blueText: #6b7386;
+$orangeText: #f47f16;
+$redText: #d13035;
+$yellowText: #f5e827;
+$greenText: $greenBackground;
+
+$white: #ffffff;
+
+
+// indents
+$marginBlock: $em-base * 2;
+$paddingBlock: $em-base;
+
+$marginElement: $em-base;
+$paddingElement: $em-base;
+
+
+// strength
+$fullWidth: 100%;
+$halfWidth: 50% / 2;

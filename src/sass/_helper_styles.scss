@@ -2,6 +2,131 @@
  * Created by Royal PR (Paul Burilichev) on 08-Aug-16.
  *
  * HELPERS STYLES DEVENITION */
+@import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "mixins";
+
+// type
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  text-transform: uppercase;
+}
+
+.h1 {
+  font-size: em($em-base * 1.3);
+}
+
+.h2 {
+  font-size: em($em-base * 1.2);
+}
+
+.h3 {
+  font-size: em($em-base * 1.35);
+  font-weight: bold;
+}
+
+.h4 {
+  font-size: em($em-base * 1.4);
+}
+
+.h5 {
+  font-size: em($em-base);
+}
+
+.h6 {
+  @extend .h3;
+}
+
+.text {
+  &.black { color: $blackText; }
+  &.white { color: $white; }
+  &.yellow { color: $yellowText; }
+  &.blue { color: $blueText; }
+  &.red { color: $redText; }
+  &.grey {
+    color: $greyText;
+
+    &.light { color: $lightGreyTextBorder; }
+  }
+
+  &.uppercase { text-transform: uppercase; }
+  &.lowercase { text-transform: lowercase; }
+
+  &.left { text-align: left; }
+  &.centered { text-align: center; }
+  &.right { text-align: right; }
+}
+
+
+// forms
+.button {
+  display: inline-block;
+  font-weight: bold;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.block { display: block; }
+
+  &.fluid {
+    width: $fullWidth;
+  }
+
+  &.small {
+    font-size: $em-base;
+    margin: $marginElement;
+    padding: $paddingElement;
+  }
+
+  &.transparent {
+    background-color: transparent;
+    @include transitionElement(background-color);
+
+    &:hover {
+      background-color: $lightGreyBackgroundHover;
+    }
+  }
+  &.green {
+    background-color: $greenBackground;
+    color: $white;
+    @include transitionElement(background-color);
+
+    &:hover { background-color: $greenBackgroundHover; }
+  }
+  &.red {
+    background-color: $redBackground;
+    color: $white;
+    @include transitionElement(background-color);
+
+    &:hover { background-color: $redBackgroundHover; }
+  }
+}
+
+
+// blocks
+.block {
+  &.right.floated {
+    float: right;
+  }
+}
+.margin {
+  &-no { margin: 0 !important; }
+  &-no-top { margin-top: 0 !important; }
+  &-no-bottom { margin-bottom: 0 !important; }
+  &-no-left { margin-left: 0 !important; }
+  &-no-right { margin-right: 0 !important; }
+}
+
+.padding {
+  &-no { padding: 0 !important; }
+  &-no-top { padding-top: 0 !important; }
+  &-no-bottom { padding-bottom: 0 !important; }
+  &-no-left { padding-left: 0 !important; }
+  &-no-right { padding-right: 0 !important; }
+}
+
 // images
 .img-clip-4by3 {
   @include img-clip-wrapper(74%, 5%);

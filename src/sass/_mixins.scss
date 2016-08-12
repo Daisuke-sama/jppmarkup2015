@@ -2,6 +2,17 @@
  * Created by Royal PR (Paul Burilichev) on 08-Aug-16.
  *
  * HELPERS MIXIN DEFENITION */
+@import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
+
+/*! transition mixin unified for website */
+@mixin transitionBlock($property) {
+  @include transition($property, ease-out 2s)
+}
+
+@mixin transitionElement($property) {
+  @include transition($property ease-out 0.5s);
+}
+
 
 /*! clipper of img to X by Y ratio */
 @mixin img-clip-wrapper($height-Y-by-percentage, $view-from-top-by-percentage: 0, $view-from-left-by-percentage: 0) {

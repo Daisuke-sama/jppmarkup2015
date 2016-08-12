@@ -33,8 +33,8 @@ var workData = {
     pugSrc: sourceDir + 'pug/',
     pugSrcFiles: sourceDir + 'pug/*.pug',
     pugDest: pubDir,
-    jsSrc: sourceDir + 'js/*.js',
-    jsSrcFiles: sourceDir + 'js/**/*.js',
+    jsSrc: sourceDir + 'js/',
+    jsSrcFiles: sourceDir + 'js/*.js',
     jsVendorSrc: sourceDir + 'js/vendor/',
     jsVendorSrcFiles: sourceDir + 'js/vendor/*.js',
     jsDest: pubDir + 'js/',
@@ -90,10 +90,10 @@ gulp.task('fincss', function () {
 /* Complete result in a single js file for public using. */
 gulp.task('finjs', ['copy-direct'], function () {
     watch(workData.jsSrcFiles, {}, function () {
-        gulp.src([workData.jsSrcFiles, '!' + workData.jsVendorSrc + 'modernizr-2.8.3.min.js'])
+        gulp.src([workData.jsVendorSrcFiles, workData.jsSrcFiles, '!' + workData.jsVendorSrc + 'modernizr-2.8.3.min.js'])
             .pipe(plumber(error))
             .pipe(uglifyjs({
-                mangle:true,
+                mangle:false,
                 output: {comments: false}}))
             .pipe(concat('alljs.min.js'))
             .pipe(gulp.dest(workData.jsDest))
@@ -117,9 +117,8 @@ gulp.task('fromSass', function () {
     return gulp.src(workData.sassSrcFiles)
         .pipe(plumber(error))
         .pipe(sass())
-        .pipe(uglifycss())
-        .pipe(concat('main.min.css'))
-        .pipe(gulp.dest(workData.cssDest + 'main.min.css'))
+        .pipe(concat('my.css'))
+        .pipe(gulp.dest(workData.cssDest))
         .pipe(livereload());
 });
 
@@ -138,10 +137,14 @@ gulp.task('copy-css-libs', function() {
         workData.cssVendorSrc + '016-menu.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/transition.css',
         workData.cssVendorSrc + '017-transition.css');
+    copyFile(workData.nodeLibs + 'semantic-ui-css/components/divider.css',
+        workData.cssVendorSrc + '018-divider.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/input.css',
         workData.cssVendorSrc + '020-input.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/form.css',
         workData.cssVendorSrc + '021-form.css');
+    copyFile(workData.nodeLibs + 'semantic-ui-css/components/tab.css',
+        workData.cssVendorSrc + '022-tab.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/button.css',
         workData.cssVendorSrc + '029-buttons.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/icon.css',
@@ -161,6 +164,8 @@ gulp.task('copy-vendor-js', function () {
         workData.jsVendorSrc + '011-dropdown.js');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/form.js',
         workData.jsVendorSrc + '012-form.js');
+    copyFile(workData.nodeLibs + 'semantic-ui-css/components/tab.js',
+        workData.jsVendorSrc + '013-tab.js');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/transition.js',
         workData.jsVendorSrc + '013-transition.js');
     copyFile(workData.nodeLibs + 'flickity/dist/flickity.pkgd.js',

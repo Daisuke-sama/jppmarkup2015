@@ -3,5 +3,60 @@
 
     This is a header of every page.
 
-#header
-    | I am a header!!
+header
+    #user-menu
+       .ui.container
+            .ui.right.aligned.grid
+                .right.floated.sixteen.wide.mobile.eight.wide.tablet.four.wide.column.computer.padding-no-bottom
+                    .dropdown
+                        a.button.small.transparent.text.yellow.margin-no= 'Log in / Register'
+                        .user.login
+                            form#login-top-form
+                                p Log in
+                                .ui.fluid.icon.input
+                                    input(type='text', placeholder='Username/Email' required)
+                                    i.asterisk.icon(class='red text')
+                                .ui.fluid.icon.input
+                                    input(type='password', placeholder='Your password' required)
+                                    i.asterisk.icon(class='red text')
+                                .ui.fluid.icon.input
+                                    input(type='text', placeholder='EXAMPLE OF SUCCESS!!')
+                                    i.plus.icon(class='green text')
+                                p
+                                    a(href='#') Forgot password?
+                                a.small.fluid.green.button Log in
+
+                            .ui.horizontal.divider.text.white Or
+                            p.h1 Hey cats,
+                            p.
+                                Here some text about registration and how cool it can be if you have done this.
+                            a.small.fluid.red.button
+                                i.plus.icon
+                                strong Sign up
+
+                    a.button.small.transparent.text.white.margin-no.
+                        Contact Us
+    #header
+        .ui.container
+            .ui.doubling.stackable.grid
+                .row
+                    .seven.wide.column
+                        .ui.grid
+                            .bottom.aligned.row.padding-no-bottom
+                                .five.wide.column.padding-no
+                                    img(src='img/logo-small.png')
+                                .eleven.wide.column.padding-no
+                                    .company.label
+                                        b.text.uppercase japan partner
+                                        h4.description.text.grey japanese used car exporter
+                                            span.text.right.light.grey.lowercase since 2003
+
+                    .right.floated.nine.wide.column
+                        nav.ui.four.item.small.menu
+                            a.ui.dropdown.item Menu Menu 1
+                                .menu
+                                    - for(var i = 0; i < 6; i++)
+                                        .item Point PointPoint #{i+1}
+                            - for(var i = 1; i < 4; i++)
+                                a.ui.dropdown.item Menu Menu #{i+1}
+

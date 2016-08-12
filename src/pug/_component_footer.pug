@@ -3,9 +3,39 @@
 
     Footer of an every page of the website.
 
-block footer
+footer
+    .ui.container.mobile.reversed.grid
+        .four.wide.column
+            p.margin-no Address:
+            address.
+                Japan, 497-0043 Aichi-ken, Amagun, Kanie-cho, Shinchiaki, Ato-higashi 80-1
+            p Phone: 81-567-94-0015, Fax: 81-567-94-0018, #[script var emailE='japan-partner.com'; emailE=('info' + '@' + emailE); document.write('<A href="mailto:' + emailE + '">' + emailE + '</a>');]
+            p It is not working time now
 
+        .right.floated.eleven.wide.column
+            .links.in.columns
+                p.text.left Our company
+                p: a(href='#') About Japan Partner Inc.
+                p: a(href='#') For Car Dealers
+                p: a(href='#') Terms o Service
+                p: a(href='#') Privacy Policy
+                p: a(href='#') Customer Reviews
+                p: a(href='#') Contact us
+                p: a(href='#') Used cars stock
+                p: a(href='#') Used cars auctions
+                p: a(href='#') Brand new cars
+                p: a(href='#') JDM oil products
+                p: a(href='#') All services
+                p: a(href='#') Check manufacture year
+                p: a(href='#') Car shipping cost
+                p: a(href='#') Quick price guide
+                p: a(href='#') Internet fraud watch
+                p: a(href='#') Blog
 
-    block footerscripts
-        // here concatenated all scripts, include jquery
-        script(src='../../public/js/alljs.min.js'.substr(13))
+    p.text.centered.
+        Copyright © Japan Partner Inc., 2003–2016
+
+block footerscripts
+    // here concatenated all scripts, include jquery
+    script(src='../../public/js/alljs.min.js'.substr(13))
+

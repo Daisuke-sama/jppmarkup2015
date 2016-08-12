@@ -3,3 +3,7 @@
  *
  * Here: actions on specific selectors.
  */
+
+$('#header nav .dropdown').dropdown({
+    on: 'hover'
+});

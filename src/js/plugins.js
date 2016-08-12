@@ -3,3 +3,5 @@
  *
  * Here: plugins' settings.
  */
+
+var newVar = 5;

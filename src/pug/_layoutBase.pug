@@ -17,8 +17,10 @@ html(class='no-js', lang='en')
         p(class="browserupgrade") You are using an <strong>outdated</strong> browser. Please #[a(href='http://browsehappy.com', target='_blank') upgrade your browser] to improve your experience.
         <![endif]-->
 
-        include _component_header
+        block header
+            include _component_header
 
         block allContent
 
-        include _component_footer
+        block footer
+            include _component_footer
