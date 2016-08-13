@@ -8,6 +8,50 @@ block pageTitle
         This is a main page
 
 block allContent
-    - for (var i = 0; i < 2; i++)
-        p.h3 Are you a cat?
-        p Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+    .ui.container.page
+        #search-tabs
+            .ui.top.attached.tabular.menu
+                a.grey1.active.item(data-tab='usedcars') used cars
+                a.grey2.item(data-tab='machinery') machinery
+                a.grey3.item(data-tab='sorted') sorted
+
+            .ui.bottom.attached.tab.active(data-tab='usedcars')
+                .ui.middle.aligned.padded.grid
+                    .eleven.wide.column
+                        .dealers
+                            - for (var i = 1; i < 25; i++)
+                                p: a(href='#') NameName #[span 3215]
+
+                    .five.wide.column
+                        .search.box
+                            .ui.fluid.action.input
+                                input(type='text' placeholder='search by model, name or stock number')
+                                button.ui.icon.button.small.green.text.uppercase
+                                    i.search.icon
+                                    | Search
+
+                            .fast.links.fluid.block
+                                .first.line
+                                    .items
+                                        - for (var i = 1; i < 4; i++)
+                                            a(href='#') Car Name #{i}
+                                    i.caret.right.icon
+
+                                .rest.links
+                                    - for (var i = 1; i < 17; i++)
+                                        a(href='#') Car Name #{i}
+                                    b: a.fluid.block.centered.text.margin-no(href='#') Most popular japanese used cars
+
+            .ui.bottom.attached.tab(data-tab='machinery') data2
+            .ui.bottom.attached.tab(data-tab='sorted') data3
+
+
+
+        #banners
+            .carousel
+                .static.header.text.white Japanese used sports car exporter
+                .static.count.cars: b 4320 cars in stock today
+                .static.next.slide.green.button.text.uppercase Click to slide
+                    i.angle.double.right.icon
+                - for (var i = 1; i <= 5; i++)
+                    .cell: img(src=imgPath + 'mainp_big-banner.jpg')

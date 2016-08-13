@@ -13,6 +13,12 @@
   @include transition($property ease-out 0.5s);
 }
 
+@mixin boxShadow($properties) {
+  box-shadow: $properties;
+  -moz-box-shadow: $properties;
+  -o-box-shadow: $properties;
+  -webkit-box-shadow: $properties;
+}
 
 /*! clipper of img to X by Y ratio */
 @mixin img-clip-wrapper($height-Y-by-percentage, $view-from-top-by-percentage: 0, $view-from-left-by-percentage: 0) {

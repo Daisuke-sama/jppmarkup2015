@@ -35,20 +35,26 @@ html {
   #{$all-button-inputs},
   #{$all-buttons} {
     border-radius: 0 !important;
+    border-width: 2px !important;
   }
 
   a {
     color: inherit;
-
-    @include transitionElement(text-decoration);
+    @include transitionElement(color);
 
     &:hover {
-      text-decoration: underline;
+      color: $lightGreyTextBorder;
+    }
+    &:active {
+      color: $yellowText !important;
     }
   }
 }
 
+/* Header block definition. */
 header {
+  margin-bottom: $marginBlock;
+
   #user-menu {
     background-color: $greyBackground;
     color: $white;
@@ -77,8 +83,9 @@ header {
         background-color: $greyBackground;
         padding: $em-base;
         padding-top: 0;
-        box-shadow: 5px 5px 7px $lightGreyBackground;
         transition: width 2s;
+
+        @include boxShadow(3px 3px 5px rgba($lightGreyBackground, 0.5));
 
         .input {
           margin-bottom: $marginElement;
@@ -135,7 +142,7 @@ header {
 
     nav {
       z-index: 500;
-      margin-top: $marginBlock;
+      margin-top: $marginElement;
       border: none;
       box-shadow: none;
 
@@ -164,6 +171,7 @@ header {
   }
 }
 
+/* Footer block definition. */
 footer {
   padding: $paddingBlock*2 0 $paddingBlock 0;
   background-color: $greyBackground;
@@ -172,17 +180,212 @@ footer {
   .links.in.columns {
     column-count: 3;
 
-    p { margin: 0; }
+    p {
+      margin: 0;
+
+      a:hover { color: $lightGreyTextBorder; }
+    }
   }
 }
 
 
+.page {
+  margin-top: $marginBlock;
+}
+
+#search-tabs {
+  .ui.menu {
+    border-bottom: none !important;
+    min-height: em($em-base);
+
+    .item {
+      padding-top: em($em-base / 2);
+      padding-bottom: em($em-base / 2);
+      border: none !important;
+      border-top-right-radius: $em-base !important;
+
+      &:hover { background-color: $white; }
+      &:active { color: $blackText !important; }
+    }
+
+    .active.item {
+      background-color: $white;
+    }
+
+    .grey1 { background-color: $pageGreyBackground; }
+    .grey2 { background-color: lighten($lightGreyBackground, 10%); }
+    .grey3 { background-color: $lightGreyBackground; }
+  }
+
+  .tab {
+    padding: 0 $paddingBlock $paddingBlock $paddingBlock;
+    background-color: $white;
+
+    .dealers {
+      column-count: 5;
+      column-gap: em($em-base/2);
+      color: $blueText;
+
+      @extend .h2;
+      text-transform: capitalize;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          color: $blueTextHover;
+        }
+
+        span {
+          font-size: em($em-base * 0.8);
+        }
+      }
+    }
+  }
+
+  .search.box {
+    button > i.icon {
+      margin-top: -.3em;
+      margin-right: .5em;;
+    }
+
+    .fast.links {
+      display: inline-block;
+      position: relative;
+      padding-top: $marginElement;
+      font-size: em($em-base * 0.9);
+      color: $greyText;
+      background-color: $white;
+
+      a {
+        display: inline-block;
+        margin: 0 $marginElement $marginElement 0;
+
+        &:hover { color: $lightGreyTextBorder; }
+      }
+
+      .first.line {
+        position: relative;
+
+        .items {
+          overflow: hidden;
+          width: 90%;
+          height: 1.5em;
+          margin-bottom: $marginElement;
+
+          a {
+            display: inline;
+
+            &:first-of-type { margin-left: $marginElement; }
+          }
+        }
+
+        i {
+          position: absolute;
+          right: em($em-base);
+          top: 0;
+
+          @include transitionElement(transform);
+
+          &:before {
+            font-size: em($em-base * 1.5);
+            vertical-align: bottom;
+          }
+        }
+      }
+
+      .rest.links {
+        z-index: 400;
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100% !important;
+        padding: $paddingElement;
+        padding-top: 0;
+        background-color: $white;
+
+        @include transitionElement(display);
+      }
+
+      &:hover {
+        @include boxShadow(3px 3px 5px rgba($lightGreyBackground, 0.5));
+
+        i { transform: rotate(-90deg); }
+
+        .rest.links {
+          display: block;
+
+          @include boxShadow(3px 3px 5px rgba($lightGreyBackground, 0.5));
+        }
+      }
+    }
 
 
+  }
+}
 
+#banners {
+  .carousel {
+    position: relative;
 
+    .static {
+      z-index: 400;
+      position: absolute;
+      font-size: modular-scale(1);
 
+      &.header {
+        left: 0;
+        top: 0;
+        padding: $paddingElement;
+        background-color: rgba($greyBackgroundHover, .5);
 
+        border-bottom-right-radius: $em-base;
+        -webkit-border-bottom-right-radius: $em-base;
+      }
+
+      &.count.cars {
+        left: 0;
+        bottom: 0;
+        padding: $paddingElement;
+        background-color: $white;
+        color: $blueText;
+
+        border-top-right-radius: $em-base;
+        -webkit-border-top-right-radius: $em-base;
+      }
+
+      &.next.slide {
+        right: 0;
+        bottom: em(-$em-base);
+        padding: $paddingElement*1.2 $paddingElement $paddingElement $paddingElement*1.7;
+        cursor: pointer;
+      }
+    }
+
+    .cell {
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .flickity-page-dots {
+      bottom: 5%;
+
+      .dot {
+        width: em($em-base);
+        height: em($em-base * 1.2);
+        background-color: $orangeText;
+        border: 2px solid $white;
+      }
+    }
+
+    button { display: none; }
+    &:hover button { display: block; }
+  }
+}
 
 
 

@@ -110,7 +110,12 @@
   &.right.floated {
     float: right;
   }
+
+  &.fluid {
+    width: 100%;
+  }
 }
+
 .margin {
   &-no { margin: 0 !important; }
   &-no-top { margin-top: 0 !important; }
