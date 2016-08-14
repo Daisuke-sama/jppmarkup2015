@@ -18,4 +18,20 @@ $(document).ready(function () {
         $mainBanner.flickity('next');
     });
 
+
+    /*
+     * Slider with thumbnails on any page */
+    var sliderThumbGallery = $('.slider > .gallery').flickity({
+        cellSelector: '.cell',
+        wrapAround: true,
+        lazyLoad: 2,
+        pageDots: false
+    });
+    var sliderThumbGalleryThumbnails = $('.slider > .thumbnails').flickity({
+        asNavFor: '.slider > .gallery',
+        cellSelector: '.cell',
+        contain: true,
+        pageDots: false,
+        prevNextButtons: false
+    });
 });

@@ -39,15 +39,7 @@ html {
   }
 
   a {
-    color: inherit;
-    @include transitionElement(color);
-
-    &:hover {
-      color: $lightGreyTextBorder;
-    }
-    &:active {
-      color: $yellowText !important;
-    }
+    @extend .link;
   }
 }
 
@@ -69,11 +61,6 @@ header {
 
       .user.login {
         z-index: 1000;
-
-        #login-top-form {
-          color: inherit;
-        }
-
         display: none;
         position: absolute;
         min-width: 200%;
@@ -85,6 +72,8 @@ header {
         padding-top: 0;
         transition: width 2s;
 
+        #login-top-form { color: inherit; }
+
         @include boxShadow(3px 3px 5px rgba($lightGreyBackground, 0.5));
 
         .input {
@@ -93,12 +82,24 @@ header {
           &:last-of-type { @extend .margin-no; }
         }
 
-        p {
-          margin: $em-base;
+        p { margin: $em-base; }
+
+        a.button { @extend .margin-no; }
+
+        .rounded.photo {
+          border-radius: 50%;
         }
 
-        a.button {
-          @extend .margin-no;
+        .vertical.menu {
+          border-radius: 0;
+          background-color: inherit;
+          border: none;
+
+          @include boxShadow(none);
+
+          .item {
+            color: $white;
+          }
         }
       }
 
@@ -191,204 +192,423 @@ footer {
 
 .page {
   margin-top: $marginBlock;
+  background-color: $white;
 }
 
-#search-tabs {
-  .ui.menu {
-    border-bottom: none !important;
-    min-height: em($em-base);
-
-    .item {
-      padding-top: em($em-base / 2);
-      padding-bottom: em($em-base / 2);
-      border: none !important;
-      border-top-right-radius: $em-base !important;
-
-      &:hover { background-color: $white; }
-      &:active { color: $blackText !important; }
-    }
-
-    .active.item {
-      background-color: $white;
-    }
-
-    .grey1 { background-color: $pageGreyBackground; }
-    .grey2 { background-color: lighten($lightGreyBackground, 10%); }
-    .grey3 { background-color: $lightGreyBackground; }
+#main {
+  h1, h2, h5, h6 {
+    text-align: right;
   }
 
-  .tab {
-    padding: 0 $paddingBlock $paddingBlock $paddingBlock;
-    background-color: $white;
+  #search-tabs {
+    .ui.menu {
+      border-bottom: none !important;
+      min-height: em($em-base);
+      background-color: $pageGreyBackground;
 
-    .dealers {
-      column-count: 5;
-      column-gap: em($em-base/2);
-      color: $blueText;
-
-      @extend .h2;
-      text-transform: capitalize;
-
-      a {
-        text-decoration: none;
+      .item {
+        padding-top: em($em-base / 2);
+        padding-bottom: em($em-base / 2);
+        border: none !important;
+        border-top-right-radius: $em-base !important;
 
         &:hover {
-          color: $blueTextHover;
+          background-color: $white;
         }
+        &:active {
+          color: $blackText !important;
+        }
+      }
 
-        span {
-          font-size: em($em-base * 0.8);
+      .active.item {
+        background-color: $white;
+      }
+
+      .grey1 {
+        background-color: $pageGreyBackground;
+      }
+      .grey2 {
+        background-color: lighten($lightGreyBackground, 10%);
+      }
+      .grey3 {
+        background-color: $lightGreyBackground;
+      }
+    }
+
+    .tab {
+      padding: 0 $paddingBlock $paddingBlock $paddingBlock;
+      background-color: $white;
+
+      @at-root {
+        .dealers {
+          column-gap: em($em-base/2);
+          color: $blueText;
+
+          @extend .h2;
+          text-transform: capitalize;
+
+          &.five.columns { column-count: 5; }
+          &.three.columns { column-count: 3; }
+          &.two.columns { column-count: 2; }
+
+          a {
+            text-decoration: none;
+
+            &:hover { color: $blueTextHover; }
+
+            span { font-size: em($em-base * 0.8); }
+          }
         }
       }
     }
   }
 
-  .search.box {
-    button > i.icon {
-      margin-top: -.3em;
-      margin-right: .5em;;
-    }
-
-    .fast.links {
-      display: inline-block;
+  #banners {
+    .carousel {
       position: relative;
-      padding-top: $marginElement;
-      font-size: em($em-base * 0.9);
-      color: $greyText;
-      background-color: $white;
 
-      a {
-        display: inline-block;
-        margin: 0 $marginElement $marginElement 0;
+      .static {
+        z-index: 400;
+        position: absolute;
+        font-size: modular-scale(1);
 
-        &:hover { color: $lightGreyTextBorder; }
+        &.header {
+          left: 0;
+          top: 0;
+          padding: $paddingElement;
+          background-color: rgba($greyBackgroundHover, .5);
+
+          border-bottom-right-radius: $em-base;
+          -webkit-border-bottom-right-radius: $em-base;
+        }
+
+        &.count.cars {
+          left: 0;
+          bottom: 0;
+          padding: $paddingElement;
+          background-color: $white;
+          color: $blueText;
+
+          border-top-right-radius: $em-base;
+          -webkit-border-top-right-radius: $em-base;
+        }
+
+        &.next.slide {
+          right: 0;
+          bottom: em(-$em-base);
+          padding: $paddingElement*1.2 $paddingElement $paddingElement $paddingElement*1.7;
+          cursor: pointer;
+        }
       }
 
-      .first.line {
-        position: relative;
+      .cell {
+        width: 100%;
 
-        .items {
-          overflow: hidden;
-          width: 90%;
-          height: 1.5em;
-          margin-bottom: $marginElement;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
 
-          a {
-            display: inline;
+      .flickity-page-dots {
+        bottom: 5%;
 
-            &:first-of-type { margin-left: $marginElement; }
+        .dot {
+          width: em($em-base);
+          height: em($em-base * 1.2);
+          background-color: $orangeText;
+          border: 2px solid $white;
+        }
+      }
+
+      button { display: none; }
+
+      &:hover button { display: block; }
+    }
+  }
+
+  .review.block {
+    margin-top: $marginBlock;
+
+    .read.more {
+      color: $blueText;
+
+      &:hover { color: $blueTextHover; }
+    }
+  }
+}
+
+/* Universal across-site definitions. */
+.search.box {
+  button > i.icon {
+    margin-top: -.3em;
+    margin-right: .5em;;
+  }
+
+  .fast.links {
+    display: inline-block;
+    position: relative;
+    padding-top: $marginElement;
+    font-size: em($em-base * 0.9);
+    color: $greyText;
+    background-color: $white;
+
+    a {
+      display: inline-block;
+      margin: 0 $marginElement $marginElement 0;
+
+      &:hover {
+        color: $lightGreyTextBorder;
+      }
+    }
+
+    .first.line {
+      position: relative;
+
+      .items {
+        overflow: hidden;
+        width: 90%;
+        height: 1.5em;
+        margin-bottom: $marginElement;
+
+        a {
+          display: inline;
+
+          &:first-of-type {
+            margin-left: $marginElement;
           }
         }
+      }
 
-        i {
-          position: absolute;
-          right: em($em-base);
-          top: 0;
+      i {
+        position: absolute;
+        right: em($em-base);
+        top: 0;
 
-          @include transitionElement(transform);
+        @include transitionElement(transform);
 
-          &:before {
-            font-size: em($em-base * 1.5);
-            vertical-align: bottom;
-          }
+        &:before {
+          font-size: em($em-base * 1.5);
+          vertical-align: bottom;
         }
+      }
+    }
+
+    .rest.links {
+      z-index: 400;
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100% !important;
+      padding: $paddingElement;
+      padding-top: 0;
+      background-color: $white;
+
+      @include transitionElement(display);
+    }
+
+    &:hover {
+      @include boxShadow(3px 3px 5px rgba($lightGreyBackground, 0.5));
+
+      i {
+        transform: rotate(-90deg);
       }
 
       .rest.links {
-        z-index: 400;
-        display: none;
-        position: absolute;
-        right: 0;
-        top: 100% !important;
-        padding: $paddingElement;
-        padding-top: 0;
-        background-color: $white;
+        display: block;
 
-        @include transitionElement(display);
-      }
-
-      &:hover {
         @include boxShadow(3px 3px 5px rgba($lightGreyBackground, 0.5));
+      }
+    }
+  }
 
-        i { transform: rotate(-90deg); }
+}
 
-        .rest.links {
+.card {
+  overflow: hidden;
+
+  a {
+    text-decoration: none !important;
+
+    &:hover { color: inherit; }
+
+    &:active { color: inherit; }
+  }
+
+  p {
+    margin: 0 0 0 0;
+    margin-top: em($em-base / 2);
+  }
+
+  .name {
+    color: $blueText;
+
+    @extend .h3;
+    text-transform: inherit;
+  }
+
+  .price {
+    float: left;
+    color: $blueText;
+
+    @extend .h3
+  }
+
+  .watchlist {
+    visibility: hidden;
+    float: right;
+    font-weight: bold;
+    color: $orangeText;
+    text-decoration: underline;
+    font-size: em($em-base * 1.2);
+
+    &:hover { color: $orangeTextHover; }
+  }
+
+  &:hover .watchlist {
+    visibility: visible;
+  }
+
+  &.mobile.transform {
+
+  }
+}
+
+.review.block {
+  .stars {
+    /* the default rating is placed as a background image in the ul */
+    /* use the background position according to the table above to display the required images*/
+    .rating{
+      width: 80px;
+      height: 16px;
+      margin: 0 0 20px 0;
+      padding: 0;
+      list-style: none;
+      clear: both;
+      position: relative;
+      background: url(../img/star-matrix.gif) no-repeat 0 0;
+
+      /* add these classes to the ul.rating to effect the change to the correct number of stars */
+      &.nostar { background-position: 0 0; }
+      &.onestar { background-position: 0 -96px; }
+      &.twostars { background-position: 0 -112px; }
+      &.threestars { background-position: 0 128px; }
+      &.fourstars { background-position: 0 -144px; }
+      &.fivestars { background-position: 0 160px; }
+
+      & .star {
+        cursor: pointer;
+        /*ie5 mac doesn't like it if the list is floated\*/
+        float: left;
+        /* end hide*/
+        text-indent: -999em;
+
+        a {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 16px;
+          height: 16px;
+          text-decoration: none;
+          z-index: 200;
+        }
+
+        &.one a { left: 0; }
+        &.two a { left: 16px; }
+        &.three a { left: 32px; }
+        &.four a { left: 48px; }
+        &.five a { left: 64px; }
+
+        & a:hover {
+          z-index: 2;
+          width: 80px;
+          height: 16px;
+          overflow: hidden;
+          left:0;
+          background: url(../img/star-matrix.gif) no-repeat 0 0;
+        }
+
+        &.one a:hover { background-position: 0 -16px; }
+        &.two a:hover { background-position: 0 -32px; }
+        &.three a:hover { background-position: 0 -48px; }
+        &.four a:hover { background-position: 0 -64px; }
+        &.five a:hover { background-position: 0 -80px; }
+      }
+    }
+  }
+}
+
+.facebook.block {
+  $size: em($em-base * 3);
+
+  display: flex;
+  float: right;
+  min-height: $size;
+
+  .name {
+    @extend .h2;
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+
+  i {
+    display: block;
+    color: $blueText;
+    line-height: $size;
+    width: $size;
+    height: $size;
+
+    &:before {
+      font-size: $size;
+    }
+  }
+}
+
+.video.block {
+  h2 {
+    margin-bottom: $marginElement / 2;
+  }
+}
+
+.slider.block {
+  .carousel {
+    &.gallery {
+      z-index: 100;
+
+      button { visibility: hidden; }
+
+      &:hover button { visibility: visible; }
+    }
+
+    &.thumbnails {
+      z-index: 99;
+      margin-top: em(-$marginElement);
+
+      .cell {
+        width: 150px;
+        height: auto;
+
+        .cover {
           display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba($blueTextHover, .6);
+        }
 
-          @include boxShadow(3px 3px 5px rgba($lightGreyBackground, 0.5));
+        &.is-nav-selected .cover {
+          display: none;
         }
       }
     }
-
-
   }
 }
 
-#banners {
-  .carousel {
-    position: relative;
-
-    .static {
-      z-index: 400;
-      position: absolute;
-      font-size: modular-scale(1);
-
-      &.header {
-        left: 0;
-        top: 0;
-        padding: $paddingElement;
-        background-color: rgba($greyBackgroundHover, .5);
-
-        border-bottom-right-radius: $em-base;
-        -webkit-border-bottom-right-radius: $em-base;
-      }
-
-      &.count.cars {
-        left: 0;
-        bottom: 0;
-        padding: $paddingElement;
-        background-color: $white;
-        color: $blueText;
-
-        border-top-right-radius: $em-base;
-        -webkit-border-top-right-radius: $em-base;
-      }
-
-      &.next.slide {
-        right: 0;
-        bottom: em(-$em-base);
-        padding: $paddingElement*1.2 $paddingElement $paddingElement $paddingElement*1.7;
-        cursor: pointer;
-      }
-    }
-
-    .cell {
-      width: 100%;
-
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    .flickity-page-dots {
-      bottom: 5%;
-
-      .dot {
-        width: em($em-base);
-        height: em($em-base * 1.2);
-        background-color: $orangeText;
-        border: 2px solid $white;
-      }
-    }
-
-    button { display: none; }
-    &:hover button { display: block; }
-  }
+#last-recommended {
+  padding: $paddingElement;
 }
-
-
-
 
 // browser upgrade
 .browserupgrade {

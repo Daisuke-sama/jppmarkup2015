@@ -3,6 +3,30 @@
 
     Footer of an every page of the website.
 
+.ui.container.page.margin-no
+    .search.box
+        .ui.three.column.padded.grid
+            .column.padding-no-top
+                .ui.fluid.action.input
+                    input(type='text' placeholder='search by model, name or stock number')
+                    button.ui.icon.button.small.green.text.uppercase
+                        i.search.icon
+                        | Search
+
+            //- FAST SEARCH LINKS
+            .column.padding-no-top
+                .fast.links.fluid.block
+                    .first.line
+                        .items
+                            - for (var i = 1; i < 4; i++)
+                                a(href='#') Car Name #{i}
+                        i.caret.right.icon
+
+                    .rest.links
+                        - for (var i = 1; i < 17; i++)
+                            a(href='#') Car Name #{i}
+                        b: a.fluid.block.centered.text.margin-no(href='#') Most popular japanese used cars
+
 footer
     .ui.container.mobile.reversed.grid
         .four.wide.column

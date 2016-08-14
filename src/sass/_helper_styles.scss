@@ -35,6 +35,16 @@
   @extend .h3;
 }
 
+.super.heading {
+  line-height: 1;
+  font-size: em($em-base * 5);
+  font-weight: bold;
+  background-color: $lightGreyBackground;
+  color: $white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .text {
   &.black { color: $blackText; }
   &.white { color: $white; }
@@ -49,10 +59,25 @@
 
   &.uppercase { text-transform: uppercase; }
   &.lowercase { text-transform: lowercase; }
+  &.capitalize { text-transform: capitalize; }
 
   &.left { text-align: left; }
   &.centered { text-align: center; }
   &.right { text-align: right; }
+}
+
+.link {
+  color: inherit;
+  text-decoration: underline;
+
+  @include transitionElement(color);
+
+  &:hover {
+    color: $lightGreyTextBorder;
+  }
+  &:active {
+    color: $yellowText !important;
+  }
 }
 
 
@@ -88,6 +113,7 @@
       background-color: $lightGreyBackgroundHover;
     }
   }
+
   &.green {
     background-color: $greenBackground;
     color: $white;
@@ -95,6 +121,7 @@
 
     &:hover { background-color: $greenBackgroundHover; }
   }
+
   &.red {
     background-color: $redBackground;
     color: $white;
@@ -107,12 +134,25 @@
 
 // blocks
 .block {
-  &.right.floated {
-    float: right;
+  display: block;
+
+  &.overflow { overflow: auto; }
+
+  &.right.floated { float: right; }
+  &.left.floated { float: left; }
+  &.fluid { width: 100%; }
+  &.inline { display: inline-block; }
+  &.margined { margin: $marginElement; }
+  &.padded { padding: $paddingElement; }
+
+  &.blue.background {
+    background-color: $blueBackground;
+    color: $white;
   }
 
-  &.fluid {
-    width: 100%;
+  &.border.bottom.px {
+    border-bottom: rgba($greyBackground, .25) 1px solid;
+    margin-bottom: 1em;
   }
 }
 
