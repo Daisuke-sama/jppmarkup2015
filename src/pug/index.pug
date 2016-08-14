@@ -17,57 +17,58 @@ block allContent
 
             .ui.bottom.attached.tab.active(data-tab='usedcars')
                 .ui.middle.aligned.padded.grid
-                    .eleven.wide.column
+                    .row
+                        .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column
 
-                        //- DEALIERS ON TOP TAB
-                        .five.columns.dealers
-                            - for (var i = 1; i < 25; i++)
-                                p: a(href='#') NameName #[span 3215]
+                            //- DEALIERS ON TOP TAB
+                            .five.columns.dealers
+                                - for (var i = 1; i < 25; i++)
+                                    p: a(href='#') NameName #[span 3215]
 
-                    .five.wide.column
+                        .sixteen.wide.computer.five.wide.large.screen.five.wide.widescreen.column
 
-                        //- SEARCH ON TOP TAB
-                        .search.box
-                            .ui.fluid.action.input
-                                input(type='text' placeholder='search by model, name or stock number')
-                                button.ui.icon.button.small.green.text.uppercase
-                                    i.search.icon
-                                    | Search
+                            //- SEARCH ON TOP TAB
+                            .search.box
+                                .ui.fluid.action.input
+                                    input(type='text' placeholder='search by model, name or stock number')
+                                    a.ui.icon.button.small.green.text.uppercase
+                                        i.search.icon
+                                        | Search
 
-                            //- FAST SEARCH LINKS
-                            .fast.links.fluid.block
-                                .first.line
-                                    .items
-                                        - for (var i = 1; i < 4; i++)
+                                //- FAST SEARCH LINKS
+                                .fast.links.fluid.block
+                                    .first.line
+                                        .items
+                                            - for (var i = 1; i < 4; i++)
+                                                a(href='#') Car Name #{i}
+                                        i.caret.right.icon
+
+                                    .rest.links
+                                        - for (var i = 1; i < 17; i++)
                                             a(href='#') Car Name #{i}
-                                    i.caret.right.icon
-
-                                .rest.links
-                                    - for (var i = 1; i < 17; i++)
-                                        a(href='#') Car Name #{i}
-                                    b: a.fluid.block.centered.text.margin-no(href='#') Most popular japanese used cars
+                                        b: a.fluid.block.centered.text.margin-no(href='#') Most popular japanese used cars
 
             .ui.bottom.attached.tab(data-tab='machinery') data2
             .ui.bottom.attached.tab(data-tab='sorted') data3
 
         #banners
             .carousel
-                .static.header.text.white Japanese used sports car exporter
+                .static.header.text.white.tablet.or.lower.hidden Japanese used sports car exporter
                 .static.count.cars: b 4320 cars in stock today
-                .static.next.slide.green.button.text.uppercase Click to slide
+                .static.next.slide.green.button.text.uppercase.mobile.or.lower.hidden Click to slide
                     i.angle.double.right.icon
                 - for (var i = 1; i <= 5; i++)
                     .cell: img(src=imgPath + 'mainp_big-banner.jpg')
 
 
         .ui.padded.vertical.divided.grid
-            .eleven.wide.column
+            .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column
 
                 //- USED CARS LIST
-                .border.bottom.px.block
+                .cars.list.block.border.bottom.px
                     h1 japanese used cars.
                         span.red.text new stock arrival
-                    .ui.three.column.grid
+                    .ui.three.column.stackable.grid
                         - for (var i = 1; i <= 6; i++)
                             .column
                                 include _component_car_vertical_card_mobile_transform
@@ -75,14 +76,14 @@ block allContent
                         a(href='#') view all used cars stock (4526)...
 
                 //- BLOG LIST
-                .block
+                .news.list.block
                     h2 USED CARS OF SPECIAL INTEREST
-                    .ui.three.column.grid
+                    .ui.three.column.stackable.grid
                         - for (var i = 1; i <= 3; i++)
                             .column
                                 include _component_news_vertical_card_mobile_transform
 
-            .five.wide.column
+            .sixteen.wide.computer.five.wide.large.screen.five.wide.widescreen.column
 
                 //- REVIEW
                 .review.block.border.bottom.px
@@ -105,10 +106,11 @@ block allContent
                     p «I vouch for what they say (about condition and pre-shipment inspection). I have a GTO from them and when I was to change all fluids, it was all clear. The transaction was as smooth as it could be. 5 stars»
                     .overflow.block
                         a.read.more.left.floated.block Read more reviews
-                        include _component_facebook
+                        .large.screen.only.widescreen.only
+                            include _component_facebook
 
                 //- TIPS
-                .tips.block
+                .tips.block.margin-no-by-side.mobile.only
                     - for (var i = 1; i <= 4; i++)
                         include _component_tip
 
@@ -122,17 +124,22 @@ block allContent
 
         //- SUPPLIER SINCE 2003
         .super.heading.block supplier since 2003
-        .ui.padded.vertical.divided.grid
-            .eleven.wide.column
-                h2 USED INDUSTRIAL AND AGRICULTURE MACHINERY AND EQUIPMENT
-                .ui.three.column.grid
-                    - for (var i = 1; i <= 3; i++)
-                        .column
-                            include _component_car_vertical_card_mobile_transform
-                .centered.blue.h4.lowercase.text.fluid.margined.block
-                    a(href='#') view all machinery stock (4526)...
 
-            .five.wide.column
+        .ui.padded.vertical.divided.grid
+
+            //- INDUSTRIAL CARS
+            .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column
+                .cars.list.block
+                    h2 USED INDUSTRIAL AND AGRICULTURE MACHINERY AND EQUIPMENT
+                    .ui.three.column.stackable.grid
+                        - for (var i = 1; i <= 3; i++)
+                            .column
+                                include _component_car_vertical_card_mobile_transform
+                    .centered.blue.h4.lowercase.text.fluid.margined.block
+                        a(href='#') view all machinery stock (4526)...
+
+            //- INDUSTRIAL DEALERS
+            .sixteen.wide.computer.five.wide.large.screen.five.wide.widescreen.column
                 .two.columns.dealers
                     - for (var i = 1; i < 10; i++)
                         p: a(href='#') NameName #[span 3215]
@@ -143,8 +150,11 @@ block allContent
 
         //- WHY US
         .super.heading.block why us
-        .ui.padded.vertical.divided.grid.border.bottom.px.block
-            .five.wide.column
+
+        .ui.padded.vertical.divided.grid.border.bottom.px.block.padding-no-by-side.mobile.only
+
+            //- TIPS WHY US
+            .sixteen.wide.computer.five.wide.large.screen.five.wide.widescreen.column
                 .tips
                     - for (var i = 1; i <= 4; i++)
                         include _component_tip
@@ -155,29 +165,23 @@ block allContent
                         p.margin-no-top: a(href='#') Sneek Peek: Japan Partner’s Nissan Skyline stock photosoot...
                         p.margin-no-top: a(href='#') From Europe with love: The best used european cars from Japan
 
-
-            .eleven.wide.column
+            //- GALLERY
+            .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column.padding-no-top
                 .h2.right.text japanese used cars gallery
-                .slider.block
-                    .carousel.gallery
-                        - for (var i = 3; i <= 9; i++)
-                            .cell
-                                img(src='img/auto' + i + '.jpg')
-                    .carousel.thumbnails
-                        - for (var i = 3; i <= 9; i++)
-                            .cell
-                                .img-clip-4by3
-                                    img(src='img/auto' + i + '.jpg')
-                                    .cover
+                include _component_gallery_with_thumbnails
 
         #last-recommended
             h5 last viewed vechicles
-            .ui.four.column.grid.border.bottom.px.block
-                - for (var i = 1; i <= 4; i++)
-                    .column
+            .ui.centered.stackable.grid.border.bottom.px.block
+                - for (var i = 1; i <= 3; i++)
+                    .five.wide.computer.four.wide.large.screen.four.wide.widescreen.column
                         include _component_car_vertical_card_mobile_transform
+                .four.wide.large.screen.four.wide.widescreen.column.computer.or.lower.hidden
+                    include _component_car_vertical_card_mobile_transform
             h5 recommended used cars
-            .ui.four.column.grid.border.bottom.px.block
-                - for (var i = 1; i <= 4; i++)
-                    .column
+            .ui.centered.stackable.grid.border.bottom.px.block
+                - for (var i = 1; i <= 3; i++)
+                    .five.wide.computer.four.wide.large.screen.four.wide.widescreen.column
                         include _component_car_vertical_card_mobile_transform
+                .four.wide.large.screen.four.wide.widescreen.column.computer.or.lower.hidden
+                    include _component_car_vertical_card_mobile_transform

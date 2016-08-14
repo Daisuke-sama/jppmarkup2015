@@ -8,9 +8,10 @@ $(document).ready(function () {
     /*
      * Banner from main page */
     var $mainBanner = $('#banners > .carousel').flickity({
-       cellSelector: '.cell',
-       wrapAround:  true,
-       lazyLoad: 2
+        cellSelector: '.cell',
+        wrapAround:  true,
+        autoPlay: true,
+        lazyLoad: 2
     });
 
     // Click on "Next slide"
@@ -25,6 +26,7 @@ $(document).ready(function () {
         cellSelector: '.cell',
         wrapAround: true,
         lazyLoad: 2,
+        adaptiveHeight: true,
         pageDots: false
     });
     var sliderThumbGalleryThumbnails = $('.slider > .thumbnails').flickity({

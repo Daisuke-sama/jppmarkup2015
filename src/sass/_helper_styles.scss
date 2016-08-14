@@ -3,6 +3,7 @@
  *
  * HELPERS STYLES DEVENITION */
 @import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "variables";
 @import "mixins";
 
 // type
@@ -11,24 +12,24 @@
 }
 
 .h1 {
-  font-size: em($em-base * 1.3);
+  font-size: 1rem * 1.3;
 }
 
 .h2 {
-  font-size: em($em-base * 1.2);
+  font-size: 1rem * 1.2;
 }
 
 .h3 {
-  font-size: em($em-base * 1.35);
+  font-size: 1rem * 1.35;
   font-weight: bold;
 }
 
 .h4 {
-  font-size: em($em-base * 1.4);
+  font-size: 1rem * 1.4;
 }
 
 .h5 {
-  font-size: em($em-base);
+  font-size: 1rem;
 }
 
 .h6 {
@@ -37,12 +38,20 @@
 
 .super.heading {
   line-height: 1;
-  font-size: em($em-base * 5);
+  font-size: 1rem * 5;
   font-weight: bold;
   background-color: $lightGreyBackground;
   color: $white;
   text-align: center;
   text-transform: uppercase;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    font-size: 1rem * 3;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 1rem * 2;
+  }
 }
 
 .text {
@@ -162,14 +171,29 @@
   &-no-bottom { margin-bottom: 0 !important; }
   &-no-left { margin-left: 0 !important; }
   &-no-right { margin-right: 0 !important; }
+
+  &-no-by-side.mobile.only {
+    @media screen and (max-width: 767px) {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+
 }
 
 .padding {
   &-no { padding: 0 !important; }
   &-no-top { padding-top: 0 !important; }
   &-no-bottom { padding-bottom: 0 !important; }
-  &-no-left { padding-left: 0 !important; }
-  &-no-right { padding-right: 0 !important; }
+  &-no-left:not(.mobile.only) { padding-left: 0 !important; }
+  &-no-right:not(.mobile.only) { padding-right: 0 !important; }
+
+  &-no-by-side.mobile.only {
+    @media screen and (max-width: 767px) {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
 }
 
 // images

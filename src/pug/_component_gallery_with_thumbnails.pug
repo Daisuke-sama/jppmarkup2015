@@ -1,0 +1,17 @@
+//
+   Created by Royal PR (Paul Burilichev) on 15-Aug-16.
+
+    Here the chunk of a gallery with thumbnails
+
+.slider.block
+    .carousel.gallery
+        - for (var i = 3; i <= 9; i++)
+        .cell
+            .img-clip-4by3
+                img(src='img/auto' + i + '.jpg')
+    .carousel.thumbnails
+        - for (var i = 3; i <= 9; i++)
+        .cell
+            .img-clip-4by3
+                img(src='img/auto' + i + '.jpg')
+                .cover

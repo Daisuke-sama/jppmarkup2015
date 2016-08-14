@@ -4,18 +4,18 @@
     Footer of an every page of the website.
 
 .ui.container.page.margin-no
-    .search.box
-        .ui.three.column.padded.grid
-            .column.padding-no-top
-                .ui.fluid.action.input
+    .search.box.footer
+        .ui.padded.stackable.grid
+            .eight.wide.computer.six.wide.large.screen.six.wide.widescreen.column
+                .ui.fluid.action.input.footer
                     input(type='text' placeholder='search by model, name or stock number')
-                    button.ui.icon.button.small.green.text.uppercase
+                    a.ui.icon.button.small.green.text.uppercase
                         i.search.icon
                         | Search
 
-            //- FAST SEARCH LINKS
-            .column.padding-no-top
-                .fast.links.fluid.block
+            .eight.wide.computer.five.wide.large.screen.six.wide.widescreen.column
+                //- FAST SEARCH LINKS
+                .fast.links.fluid.block.footer
                     .first.line
                         .items
                             - for (var i = 1; i < 4; i++)
@@ -28,33 +28,34 @@
                         b: a.fluid.block.centered.text.margin-no(href='#') Most popular japanese used cars
 
 footer
-    .ui.container.mobile.reversed.grid
-        .four.wide.column
-            p.margin-no Address:
-            address.
-                Japan, 497-0043 Aichi-ken, Amagun, Kanie-cho, Shinchiaki, Ato-higashi 80-1
-            p Phone: 81-567-94-0015, Fax: 81-567-94-0018, #[script var emailE='japan-partner.com'; emailE=('info' + '@' + emailE); document.write('<A href="mailto:' + emailE + '">' + emailE + '</a>');]
-            p It is not working time now
+    .ui.container.mobile.reversed.stackable.grid
+        .row
+            .four.wide.column
+                p.margin-no Address:
+                address.
+                    Japan, 497-0043 Aichi-ken, Amagun, Kanie-cho, Shinchiaki, Ato-higashi 80-1
+                p Phone: 81-567-94-0015, Fax: 81-567-94-0018, #[script var emailE='japan-partner.com'; emailE=('info' + '@' + emailE); document.write('<A href="mailto:' + emailE + '">' + emailE + '</a>');]
+                p It is not working time now
 
-        .right.floated.eleven.wide.column
-            .links.in.columns
-                p.text.left Our company
-                p: a(href='#') About Japan Partner Inc.
-                p: a(href='#') For Car Dealers
-                p: a(href='#') Terms o Service
-                p: a(href='#') Privacy Policy
-                p: a(href='#') Customer Reviews
-                p: a(href='#') Contact us
-                p: a(href='#') Used cars stock
-                p: a(href='#') Used cars auctions
-                p: a(href='#') Brand new cars
-                p: a(href='#') JDM oil products
-                p: a(href='#') All services
-                p: a(href='#') Check manufacture year
-                p: a(href='#') Car shipping cost
-                p: a(href='#') Quick price guide
-                p: a(href='#') Internet fraud watch
-                p: a(href='#') Blog
+            .right.floated.eleven.wide.column
+                .links.in.columns
+                    p.text.left Our company
+                    p: a(href='#') About Japan Partner Inc.
+                    p: a(href='#') For Car Dealers
+                    p: a(href='#') Terms o Service
+                    p: a(href='#') Privacy Policy
+                    p: a(href='#') Customer Reviews
+                    p: a(href='#') Contact us
+                    p: a(href='#') Used cars stock
+                    p: a(href='#') Used cars auctions
+                    p: a(href='#') Brand new cars
+                    p: a(href='#') JDM oil products
+                    p: a(href='#') All services
+                    p: a(href='#') Check manufacture year
+                    p: a(href='#') Car shipping cost
+                    p: a(href='#') Quick price guide
+                    p: a(href='#') Internet fraud watch
+                    p: a(href='#') Blog
 
     p.text.centered.
         Copyright © Japan Partner Inc., 2003–2016

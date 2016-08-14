@@ -1,7 +1,7 @@
 /* Micro mobile */
 @media only screen and (max-width: 500px) {
   [class*="micro-mobile hidden"],
-  [class*="mobile only"]:not(.micro-mobile),
+  [class*="mobile only"]:not(.micro-mobile):not(.padding-no-by-side):not(.margin-no-by-side),
   [class*="tablet only"]:not(.micro-mobile),
   [class*="computer only"]:not(.micro-mobile),
   [class*="large screen only"]:not(.micro-mobile),
@@ -25,7 +25,7 @@
 /* Tablet / iPad Portrait */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   [class*="micro-mobile only"]:not(.tablet),
-  [class*="mobile only"]:not(.tablet),
+  [class*="mobile only"]:not(.tablet):not(.padding-no-by-side):not(.margin-no-by-side),
   [class*="tablet hidden"],
   [class*="computer only"]:not(.tablet),
   [class*="large screen only"]:not(.tablet),
@@ -37,7 +37,7 @@
 /* Computer / Desktop / iPad Landscape */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   [class*="micro-mobile only"]:not(.computer),
-  [class*="mobile only"]:not(.computer),
+  [class*="mobile only"]:not(.computer):not(.padding-no-by-side):not(.margin-no-by-side),
   [class*="tablet only"]:not(.computer),
   [class*="computer hidden"],
   [class*="large screen only"]:not(.computer),
@@ -49,7 +49,7 @@
 /* Large Monitor */
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {
   [class*="micro-mobile only"]:not([class*="large screen"]),
-  [class*="mobile only"]:not([class*="large screen"]),
+  [class*="mobile only"]:not([class*="large screen"]):not(.padding-no-by-side):not(.margin-no-by-side),
   [class*="tablet only"]:not([class*="large screen"]),
   [class*="computer only"]:not([class*="large screen"]),
   [class*="large screen hidden"],
@@ -61,7 +61,7 @@
 /* Widescreen Monitor */
 @media only screen and (min-width: 1920px) {
   [class*="micro-mobile only"]:not([class*="widescreen"]),
-  [class*="mobile only"]:not([class*="widescreen"]),
+  [class*="mobile only"]:not([class*="widescreen"]):not(.padding-no-by-side):not(.margin-no-by-side),
   [class*="tablet only"]:not([class*="widescreen"]),
   [class*="computer only"]:not([class*="widescreen"]),
   [class*="large screen only"]:not([class*="widescreen"]),

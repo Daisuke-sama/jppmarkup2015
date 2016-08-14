@@ -14,10 +14,22 @@
 html {
   font-family: $helvetica;
   font-size: $em-base;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px){
+    font-size: $em-base-tablet;
+  }
+
+  @media screen and (max-width: 767px){
+    font-size: $em-base-tablet;
+  }
+
   line-height: modular-scale(1);
   background-color: $pageGreyBackground;
   @include word-wrap(normal);
 
+  @media screen and (max-width: 1199px) {
+    background-color: $white;
+  }
 
   h1 { @extend .h1; }
   h2 { @extend .h2; }
@@ -26,10 +38,7 @@ html {
   h5 { @extend .h5; }
   h6 { @extend .h6; }
 
-  p {
-    margin: em($em-base) 0;
-
-  }
+  p { margin: 1rem 0; }
 
   #{$all-text-inputs},
   #{$all-button-inputs},
@@ -38,9 +47,7 @@ html {
     border-width: 2px !important;
   }
 
-  a {
-    @extend .link;
-  }
+  a { @extend .link; }
 }
 
 /* Header block definition. */
@@ -60,6 +67,11 @@ header {
       cursor: default;
 
       .user.login {
+        @media screen and (max-width: 767px) {
+          min-width: 150%;
+          right: -85px;
+        }
+
         z-index: 1000;
         display: none;
         position: absolute;
@@ -68,8 +80,7 @@ header {
         top: 100% !important;
         text-align: left;
         background-color: $greyBackground;
-        padding: $em-base;
-        padding-top: 0;
+        padding: 0 1rem 1rem 1rem;
         transition: width 2s;
 
         #login-top-form { color: inherit; }
@@ -82,13 +93,11 @@ header {
           &:last-of-type { @extend .margin-no; }
         }
 
-        p { margin: $em-base; }
+        p { margin: 1rem; }
 
         a.button { @extend .margin-no; }
 
-        .rounded.photo {
-          border-radius: 50%;
-        }
+        .rounded.photo { border-radius: 50%; }
 
         .vertical.menu {
           border-radius: 0;
@@ -97,47 +106,48 @@ header {
 
           @include boxShadow(none);
 
-          .item {
-            color: $white;
-          }
+          .item { color: $white; }
         }
       }
 
-      &:hover .user.login {
-        display: block;
-      }
+      &:hover .user.login { display: block; }
     }
-    .buttons {
-      float: right;
-    }
+
+    .buttons { float: right; }
   }
 
   #header {
-    margin-top: em($em-base);
-    padding: 0 em($paddingBlock);
+    margin-top: 1rem;
+    padding: 0 $paddingBlock;
     background-color: $white;
 
-    img {
-      display: block;
+    img { display: block; }
+
+    .facebook.wrapper {
+      @media screen and (max-width: 767px) {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+
+        @include flex-direction(row-reverse);
+      }
     }
 
     .company.label {
-      b {
-        font-size: modular-scale(1.3);
-      }
+      b { font-size: modular-scale(1.3); }
 
       .description {
         display: inline-block;
         position: relative;
-        margin-bottom: $em-base;
+        margin-bottom: 1rem;
 
-          span {
-            display: block;
-            position: absolute;
-            right: 0;
-            top: -100% !important;
-            font-size: $em-base;
-          }
+        span {
+          display: block;
+          position: absolute;
+          right: 0;
+          top: -100% !important;
+          font-size: 1rem;
+        }
       }
     }
 
@@ -146,6 +156,13 @@ header {
       margin-top: $marginElement;
       border: none;
       box-shadow: none;
+
+      @media screen and (max-width: 767px) {
+        @include display(flex);
+        @include flex-wrap(wrap);
+
+        .item.dropdown { min-width: 50%; }
+      }
 
       .item {
         border-radius: 0;
@@ -163,9 +180,7 @@ header {
         &.dropdown .menu {
           border-radius: 0 !important;
 
-          & > .item {
-            text-transform: capitalize;
-          }
+          & > .item { text-transform: capitalize; }
         }
       }
     }
@@ -179,7 +194,14 @@ footer {
   color: $white;
 
   .links.in.columns {
-    column-count: 3;
+    @include column-count(3);
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      @include column-count(2);
+    }
+    @media screen and (max-width: 767px) {
+      @include column-count(1);
+    }
 
     p {
       margin: 0;
@@ -196,69 +218,53 @@ footer {
 }
 
 #main {
-  h1, h2, h5, h6 {
-    text-align: right;
-  }
+  h1,
+  h2,
+  h5,
+  h6 { text-align: right; }
 
   #search-tabs {
     .ui.menu {
       border-bottom: none !important;
-      min-height: em($em-base);
+      min-height: 1rem;
       background-color: $pageGreyBackground;
 
-      .item {
-        padding-top: em($em-base / 2);
-        padding-bottom: em($em-base / 2);
-        border: none !important;
-        border-top-right-radius: $em-base !important;
-
-        &:hover {
-          background-color: $white;
-        }
-        &:active {
-          color: $blackText !important;
-        }
-      }
-
-      .active.item {
+      @media screen and (max-width: 1199px) {
         background-color: $white;
       }
 
-      .grey1 {
-        background-color: $pageGreyBackground;
+      .item {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border: none !important;
+        border-top-right-radius: 1rem !important;
+
+        @media screen and (max-width: 767px) {
+          padding: 0.5rem 0.5rem;
+        }
+
+        &:hover { background-color: $white; }
+        &:active { color: $blackText !important; }
       }
-      .grey2 {
-        background-color: lighten($lightGreyBackground, 10%);
-      }
-      .grey3 {
-        background-color: $lightGreyBackground;
-      }
+
+      .active.item { background-color: $white; }
+
+      .grey1 { background-color: $pageGreyBackground; }
+      .grey2 { background-color: lighten($lightGreyBackground, 10%); }
+      .grey3 { background-color: $lightGreyBackground; }
     }
 
     .tab {
       padding: 0 $paddingBlock $paddingBlock $paddingBlock;
       background-color: $white;
 
-      @at-root {
-        .dealers {
-          column-gap: em($em-base/2);
-          color: $blueText;
+      @media screen and (min-width: 768px) and (max-width: 1199px) {
+        padding-top: $paddingBlock;
+        padding-bottom: 0;
+      }
 
-          @extend .h2;
-          text-transform: capitalize;
-
-          &.five.columns { column-count: 5; }
-          &.three.columns { column-count: 3; }
-          &.two.columns { column-count: 2; }
-
-          a {
-            text-decoration: none;
-
-            &:hover { color: $blueTextHover; }
-
-            span { font-size: em($em-base * 0.8); }
-          }
-        }
+      @media screen and (max-width: 767px) {
+        padding: 0;
       }
     }
   }
@@ -277,9 +283,8 @@ footer {
           top: 0;
           padding: $paddingElement;
           background-color: rgba($greyBackgroundHover, .5);
-
-          border-bottom-right-radius: $em-base;
-          -webkit-border-bottom-right-radius: $em-base;
+          border-bottom-right-radius: 1rem;
+          -webkit-border-bottom-right-radius: 1rem;
         }
 
         &.count.cars {
@@ -288,14 +293,18 @@ footer {
           padding: $paddingElement;
           background-color: $white;
           color: $blueText;
+          border-top-right-radius: 1rem;
+          -webkit-border-top-right-radius: 1rem;
 
-          border-top-right-radius: $em-base;
-          -webkit-border-top-right-radius: $em-base;
+          @media screen and (max-width: 767px) {
+            font-size: 1rem;
+            padding: $paddingElement / 2;
+          }
         }
 
         &.next.slide {
           right: 0;
-          bottom: em(-$em-base);
+          bottom: -1rem;
           padding: $paddingElement*1.2 $paddingElement $paddingElement $paddingElement*1.7;
           cursor: pointer;
         }
@@ -311,11 +320,15 @@ footer {
       }
 
       .flickity-page-dots {
+        @media screen and (max-width: 1199px) {
+          display: none;
+        }
+
         bottom: 5%;
 
         .dot {
-          width: em($em-base);
-          height: em($em-base * 1.2);
+          width: 1rem;
+          height: 1rem * 1.2;
           background-color: $orangeText;
           border: 2px solid $white;
         }
@@ -330,36 +343,87 @@ footer {
   .review.block {
     margin-top: $marginBlock;
 
+    @media screen and (max-width: 767px) {
+      margin-top: 0;
+    }
+
     .read.more {
       color: $blueText;
 
       &:hover { color: $blueTextHover; }
     }
   }
+
+  .cars.list {
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      margin-top: 1rem;
+    }
+
+    @media screen and (max-width: 767px) {
+      h1,
+      h2 { margin-bottom: 1rem; }
+
+      .h4 {
+        margin-top: 2rem;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .news.list {
+    h2 { margin-bottom: 1rem; }
+  }
 }
 
 /* Universal across-site definitions. */
 .search.box {
-  button > i.icon {
-    margin-top: -.3em;
-    margin-right: .5em;;
+  @media screen and (min-width: 1200px) {
+    .footer {
+      margin-top: -1rem;
+    }
+  }
+
+  .input {
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      &:not(.footer) {
+        width: 50%;
+        float: left;
+      }
+      &.footer {
+        width: 100%;
+      }
+    }
+
+    a > i.icon {
+      margin-top: -.3em;
+      margin-right: .5em;;
+    }
   }
 
   .fast.links {
     display: inline-block;
     position: relative;
     padding-top: $marginElement;
-    font-size: em($em-base * 0.9);
+    font-size: 1rem * 0.9;
     color: $greyText;
     background-color: $white;
+
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      &:not(.footer) {
+        width: 45%;
+        float: right;
+      }
+      .footer {
+        width: 100%;
+      }
+    }
 
     a {
       display: inline-block;
       margin: 0 $marginElement $marginElement 0;
 
-      &:hover {
-        color: $lightGreyTextBorder;
-      }
+      &:hover { color: $lightGreyTextBorder; }
     }
 
     .first.line {
@@ -368,27 +432,25 @@ footer {
       .items {
         overflow: hidden;
         width: 90%;
-        height: 1.5em;
+        height: 1.5rem;
         margin-bottom: $marginElement;
 
         a {
           display: inline;
 
-          &:first-of-type {
-            margin-left: $marginElement;
-          }
+          &:first-of-type { margin-left: $marginElement; }
         }
       }
 
       i {
         position: absolute;
-        right: em($em-base);
+        right: 1rem;
         top: 0;
 
         @include transitionElement(transform);
 
         &:before {
-          font-size: em($em-base * 1.5);
+          font-size: 1rem * 1.5;
           vertical-align: bottom;
         }
       }
@@ -400,8 +462,7 @@ footer {
       position: absolute;
       right: 0;
       top: 100% !important;
-      padding: $paddingElement;
-      padding-top: 0;
+      padding: 0 $paddingElement $paddingElement $paddingElement;
       background-color: $white;
 
       @include transitionElement(display);
@@ -410,9 +471,7 @@ footer {
     &:hover {
       @include boxShadow(3px 3px 5px rgba($lightGreyBackground, 0.5));
 
-      i {
-        transform: rotate(-90deg);
-      }
+      i { transform: rotate(-90deg); }
 
       .rest.links {
         display: block;
@@ -421,11 +480,64 @@ footer {
       }
     }
   }
+}
 
+.dealers {
+  @include column-gap(.5rem);
+
+  color: $blueText;
+
+  @extend .h2;
+  text-transform: capitalize;
+
+
+  @media screen and (max-width: 1199px) {
+    font-size: 1rem;
+
+    p:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    margin-top: -1rem;
+  }
+
+  &.five.columns {
+    @include column-count(5);
+
+    @media screen and (min-width: 768px) and (max-width: 1199px){
+      @include column-count(3);
+    }
+    @media screen and (max-width: 767px) {
+      @include column-count(2);
+    }
+  }
+
+  &.three.columns {
+    @include column-count(3);
+
+    @media screen and (max-width: 767px) {
+      @include column-count(2);
+    }
+  }
+
+  &.two.columns {
+    @include column-count(2);
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover { color: $blueTextHover; }
+
+    span { font-size: 1rem * 0.8; }
+  }
 }
 
 .card {
   overflow: hidden;
+  text-align: left;
 
   a {
     text-decoration: none !important;
@@ -435,10 +547,7 @@ footer {
     &:active { color: inherit; }
   }
 
-  p {
-    margin: 0 0 0 0;
-    margin-top: em($em-base / 2);
-  }
+  p { margin: (1rem / 2) 0 0 0; }
 
   .name {
     color: $blueText;
@@ -451,16 +560,21 @@ footer {
     float: left;
     color: $blueText;
 
-    @extend .h3
+    @extend .h3;
   }
 
   .watchlist {
+    @media screen and (max-width: 1199px) {
+      visibility: visible;
+      font-size: 1rem;
+    }
+
     visibility: hidden;
     float: right;
     font-weight: bold;
     color: $orangeText;
     text-decoration: underline;
-    font-size: em($em-base * 1.2);
+    font-size: 1rem * 1.2;
 
     &:hover { color: $orangeTextHover; }
   }
@@ -470,7 +584,40 @@ footer {
   }
 
   &.mobile.transform {
+    @media screen and (max-width: 767px) {
+      margin-left: -1rem;
+      margin-right: -1rem;
+      margin-bottom: -1rem;
+      font-size: 0.9rem;
+      padding-bottom: 1rem;
+      border-bottom: solid 1px rgba($greyText, 0.15);
 
+      .image {
+        display: block;
+        float: left;
+        width: 40%;
+        margin-right: 5%;
+      }
+
+      .name,
+      .desc {
+        font-size: 1rem;
+        margin-top: 0;
+      }
+
+      .desc {
+        font-size: 0.9rem;
+        line-height: 1;
+      }
+
+      .wrapper {
+        display: block;
+        float: left;
+        width: 100%;
+
+        .price { width: 40%; }
+      }
+    }
   }
 }
 
@@ -501,7 +648,7 @@ footer {
         /*ie5 mac doesn't like it if the list is floated\*/
         float: left;
         /* end hide*/
-        text-indent: -999em;
+        text-indent: -999rem;
 
         a {
           position: absolute;
@@ -539,7 +686,7 @@ footer {
 }
 
 .facebook.block {
-  $size: em($em-base * 3);
+  $size: 1rem * 3;
 
   display: flex;
   float: right;
@@ -558,24 +705,28 @@ footer {
     width: $size;
     height: $size;
 
-    &:before {
-      font-size: $size;
-    }
+    &:before { font-size: $size; }
   }
 }
 
 .video.block {
-  h2 {
-    margin-bottom: $marginElement / 2;
-  }
+  h2 { margin-bottom: $marginElement / 2; }
 }
 
 .slider.block {
+  margin-top: -.5rem;
+
   .carousel {
     &.gallery {
       z-index: 100;
 
+      .cell { width: 100%; }
+
       button { visibility: hidden; }
+
+      @media screen and (max-width: 767px) {
+        button { visibility: visible; }
+      }
 
       &:hover button { visibility: visible; }
     }
@@ -587,6 +738,10 @@ footer {
       .cell {
         width: 150px;
         height: auto;
+
+        @media screen and (max-width: 767px) {
+          width: 80px;
+        }
 
         .cover {
           display: block;
@@ -608,12 +763,16 @@ footer {
 
 #last-recommended {
   padding: $paddingElement;
+
+  @media screen and (max-width: 1199px) {
+    padding: $paddingElement 0 0 0;
+  }
 }
 
 // browser upgrade
 .browserupgrade {
-  margin: 0.2em 0;
+  margin: 0.2rem 0;
   background: yellow;
   color: #000;
-  padding: 0.2em 0;
+  padding: 0.2rem 0;
 }
