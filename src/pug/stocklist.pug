@@ -1,0 +1,73 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 15-Aug-16.
+
+    Template of the stocklist page.
+
+extends _layoutBase
+
+block pageTitle
+    title This is stocklist page
+
+block allContent
+    #stocklist
+        .ui.container.page
+
+            // BREADCRUMBS
+            .breadcrumbs.block
+                ul.path
+                    li: a(href='#') Japanese used cars
+                    li.active: a(href='#') Nissan
+                ul.top.search.mobile.or.lower.hidden
+                    +formix(1,6,'<li><a href=#>skyline</a></li>')
+
+            .ui.middle.aligned.padded.grid
+                .row
+
+                    // CARS
+                    .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column.padding-no-by-side.mobile
+                        .five.columns.dealers
+                            - for (var i = 1; i <= 50; i++)
+                                p: a(href='#') Bluebird Silphy #[span 123]
+
+                    .five.wide.column.computer.or.lower.hidden
+
+                        // GALLERY TOP
+                        include _component_simple_slider
+                        include _component_facebook
+
+            .ui.padded.grid.small.devices.vertically.reversed.columns.block.margin-no-top.padding-no-top
+                .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column.padding-no-by-side.mobile
+
+                    // LIST OF CARS
+                    include _component_cars_list
+
+                .sixteen.wide.computer.five.wide.large.screen.five.wide.widescreen.column.padding-no-by-side.mobile
+
+                    // SEARCH FORM
+                    .right.floated.overflow.block
+                        h2 find used cars
+                    include _component_stock_search
+
+                    .info.left.floated.block.computer.or.lower.hidden
+                        h2 SHIPMENT OPTIONS
+                        .block
+                            p RO-RO shipment is the most convenient and usually cheapest option. Available for the most major port.
+                            p Containerized shipment is an option when RO-RO shipment isn’t available, but is usually more expensive if you buy just one vehicle. If you buy more than one vehicle we can fit 2 small cars in one 20ft container and 3-4 cars in one 40ft container. If you are wholesale buyer shipment in containers may be even more profitable.
+                            p If you buy cars for parts to be dismantled, tractors, forklifts and other machinery, containerized shipment is the only available option.
+                            p #[a(href='#') REGISTER] at our website and shipment will be calculated automatically for the port you choose.
+
+                    .info.left.floated.block.computer.or.lower.hidden
+                        h2 ABOUT NISSAN CAR MANUFACTURER
+                        .block
+                            p Nissan Motor Company Ltd.  is a Japanese multinational automobile manufacturer headquartered in Nishi-ku, Yokohama, Japan. Since 1999, Nissan has been part of the Renault–Nissan Alliance, a partnership between Nissan and French automaker Renault.
+                            p Nissan is the sixth largest automaker in the world (2013) behind Toyota, General Motors, Volkswagen Group, Hyundai Motor Group, and Ford
+                            p Slogans:
+                                br/ NISSAN, RENAISSANCE (2000-2001)
+                                br/ SHIFT_the future (2001-2008)
+                                br/ SHIFT_the way you move (2008-2012)
+                                br/ SHIFT_ (2012-2013)
+                                br/ Innovation that excites (2013-present)
+
+            .border.bottom.px.margin-no.block
+
+            include _component_last_recommend

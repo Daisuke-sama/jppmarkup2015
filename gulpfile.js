@@ -87,6 +87,31 @@ gulp.task('fincss', function () {
     });
 });
 
+
+/* SECOND VER. TRY!!! */
+var series = require('stream-series');
+
+gulp.task('fincss', function () {
+    watch([workData.sassSrcFiles, workData.cssVendorSrcFiles], {}, function () {
+        var convertFromScssToCssAndConcat =
+            gulp.src(workData.sassSrcFiles)
+                .pipe(plumber({errorHandler: function(error) {
+                     convertFromScssToCssAndConcat.emit('end')  // important
+                 }}))
+                .pipe(sass());
+
+        var minifyAndConcatExistingCss =
+            gulp.src(workData.cssVendorSrcFiles)
+                .pipe(plumber(error));
+
+        return series(minifyAndConcatExistingCss, convertFromScssToCssAndConcat)
+            .pipe(concat('final.min.css'))
+            .pipe(uglifycss())
+            .pipe(gulp.dest(workData.cssDest))
+            .pipe(livereload());
+    });
+});
+
 /* Complete result in a single js file for public using. */
 gulp.task('finjs', ['copy-direct'], function () {
     watch(workData.jsSrcFiles, {}, function () {
@@ -145,6 +170,8 @@ gulp.task('copy-css-libs', function() {
         workData.cssVendorSrc + '021-form.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/tab.css',
         workData.cssVendorSrc + '022-tab.css');
+    copyFile(workData.nodeLibs + 'semantic-ui-css/components/table.css',
+        workData.cssVendorSrc + '023-table.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/button.css',
         workData.cssVendorSrc + '029-buttons.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/icon.css',
@@ -167,7 +194,7 @@ gulp.task('copy-vendor-js', function () {
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/tab.js',
         workData.jsVendorSrc + '013-tab.js');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/transition.js',
-        workData.jsVendorSrc + '013-transition.js');
+        workData.jsVendorSrc + '014-transition.js');
     copyFile(workData.nodeLibs + 'flickity/dist/flickity.pkgd.js',
         workData.jsVendorSrc + '020-flickity.pkgd.js');
     copyFile(workData.nodeLibs + 'lity/dist/lity.js',

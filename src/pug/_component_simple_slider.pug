@@ -1,0 +1,13 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 16-Aug-16.
+
+    This is a slider placed on stocklist page and a page of the blog.
+
+.simple.slider
+    h2.text.right: b nissan gallery
+    .stocklist.carousel
+        - for (var i = 4; i <= 9; i++)
+            .cell.img-clip-4by3
+                img(src=imgPath + 'auto' + i + '.jpg')
+    .static.next.slide.green.button.text.uppercase Click to slide
+        i.angle.double.right.icon

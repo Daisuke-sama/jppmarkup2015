@@ -1,0 +1,151 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 17-Aug-16.
+
+    Template for single car page from stock list.
+
+extends _layoutBase
+
+block pageTitle
+    title This is a car's single page
+
+block allContent
+    #stockcar
+        .ui.container.page
+
+            // BREADCRUMBS
+            .breadcrumbs.block
+                ul.path
+                    li: a(href='#') Japanese used cars
+                    li: a(href='#') Nissan
+                    li: a(href='#') Nissan Skyline
+                    li.active: a(href='#') Nissan skyline gt-r twin turbo, 1991
+
+            .ui.padded.grid
+                .row
+                    .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column.padding-no-by-side.mobile
+
+                        // GALLERY
+                        include _component_gallery_with_thumbnails
+
+                        // DESCRIPTION BLOCK MOBILE
+                        .description.block.large.screen.hidden.widescreen.hidden
+                            .stockno.right.aligned.text.uppercase.block stock no 26400
+                            h1 NISSAN SKYLINE  GT-R TWIN TURBO
+                            .data.block
+                                .name price
+                                .value $17000
+                            .data.block
+                                .name.plane.text fob charge
+                                .value.plane.text $450
+                                .input
+                                    input.ui.checkbox(type='checkbox' checked)
+                            .red.text.block DO YOU PLAN TO ORGANIZE SHIPPING YOURSELF? OTHERWISE SELECT YOUR PORT OF DESTINATION
+                            a.blue.text.block(href='#') click here to change your port
+                            .data.block
+                                .name total
+                                .value $18550
+                            .action.block
+                                a.small.green.uppercase.text.fluid.button buy now
+                                    i.icon.angle.double.right
+                                .subaction
+                                    a.blue.text Add to watchlist
+                                    span |
+                                    a.blue.text Contact us
+                                .centered.block
+                                    include _component_currency
+
+                        .info.block Valid JCI (shaken), freshly repainted to original nissan midnight dark purple color, Rollbar, 2600CC, PS, PW, 4WD, Twin turbo, Manual 5 speed, Remote door lock and alarm system, Roll bar, Turbo timer and many other gauges
+
+                        // MAIN SPECS
+                        .main
+                            h2 main specs
+                            .specs.two.columns
+                                - for (i = 1; i <= 20; i++)
+                                    .block
+                                        .name Grade
+                                        .value: b Gt-r twinturbo
+
+                        .condition
+                            h2 CONDITION AND DAMAGE
+                            .specs.two.columns
+                                - for (i = 1; i <= 6; i++)
+                                    .block
+                                        .name condition
+                                        .value used
+                            .additional
+                                - for (i = 1; i <= 3; i++)
+                                    .specs
+                                        .block
+                                            .name condition
+                                            .value: b used
+
+                        .options
+                            h2 options
+                            .block.uppercase.text POWER WINDOW POWER STEERING CASSETTE/RADIO 4WD AUTO AC
+
+                        .video.block
+                            h2 NISSAN SKYLINE  GT-R TWIN TURBO, STOCK NO 26400, VIDEO
+                            .video-container
+                                .video-container-4x3
+                                    iframe(src="https://www.youtube.com/embed/RFs3BiiNOZ8" allowfullscreen)
+
+                            .video-container
+                                .video-container-4x3
+                                    iframe(src="https://www.youtube.com/embed/RFs3BiiNOZ8" allowfullscreen)
+
+
+                    .sixteen.wide.computer.five.wide.large.screen.five.wide.widescreen.column.padding-no-by-side.mobile
+
+                        // DESCRIPTION BLOCK LAPTOP+
+                        .description.block.computer.or.lower.hidden
+                            .stockno.right.aligned.uppercase.text.block stock no 26400
+                            h1 NISSAN SKYLINE  GT-R TWIN TURBO
+                            .data.block
+                                .name.important price
+                                .value.important $17000
+                            .data.block
+                                .name fob charge
+                                .value $450
+                                .input
+                                    input.ui.checkbox(type='checkbox' checked)
+                            .red.text.block DO YOU PLAN TO ORGANIZE SHIPPING YOURSELF? OTHERWISE SELECT YOUR PORT OF DESTINATION
+                            a.blue.text.block(href='#') click here to change your port
+                            .data.block
+                                .name.important total
+                                .value.important $18550
+                            .action.block
+                                a.small.green.uppercase.text.fluid.button buy now
+                                    i.icon.angle.double.right
+                                .subaction
+                                    a.blue.text Add to watchlist
+                                    span |
+                                    a.blue.text Contact us
+                                .centered.block
+                                    include _component_currency
+
+                        .info.block
+                            h2 WHAT IS FOB CHARGE?
+                            p includes all export documents preparations, translations, shipping of car to the port of departure, storage of car in the port till it’s loaded on a vessel. FOB charge isn’t applied if you take a car yourself at our yard, organize shipping yourself,  or need the car to be shipped in Japan.
+
+                        .info.block
+                            h2 SHIPMENT OPTIONS
+                            p RO-RO shipment is the most convenient and usually cheapest option. Available for the most major port.
+                            p Containerized shipment is an option when RO-RO shipment isn’t available, but is usually more expensive if you buy just one vehicle. If you buy more than one vehicle we can fit 2 small cars in one 20ft container and 3-4 cars in one 40ft container. If you are wholesale buyer shipment in containers may be even more profitable.
+                            p If you buy cars for parts to be dismantled, tractors, forklifts and other machinery, containerized shipment is the only available option.
+
+                        .info.block
+                            h2 IMPORTATION REGULATIONS
+                            p Please note that only 25-year old or older vehicles are legal to be imported into the USA and can be used for road usage without limitations.
+
+                        .blue.claim.block
+                            .uppercase.text RELATED LINKS
+                            .links
+                                +formix(1,5,'<a href="#">How to import vehicle into the USA. FAQ</a>')
+                            i.info.icon
+
+                        .centered.block
+                            include _component_facebook
+
+            .border.bottom.px.margin-no.block
+
+            include _component_last_recommend

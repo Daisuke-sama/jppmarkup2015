@@ -1,17 +1,18 @@
-//
+//-
    Created by Royal PR (Paul Burilichev) on 15-Aug-16.
 
     Here the chunk of a gallery with thumbnails
 
-.slider.block
-    .carousel.gallery
+.gallery.block
+    .carousel.slider
         - for (var i = 3; i <= 9; i++)
-        .cell
-            .img-clip-4by3
-                img(src='img/auto' + i + '.jpg')
+            .cell
+                .img-clip-4by3
+                    img(data-flickity-lazyload='img/auto' + i + '.jpg')
+    .centered.text.ui.mobile.or.lower.only swipe to change photo
     .carousel.thumbnails
         - for (var i = 3; i <= 9; i++)
-        .cell
-            .img-clip-4by3
-                img(src='img/auto' + i + '.jpg')
-                .cover
+            .cell
+                .img-clip-4by3
+                    img(src='img/auto' + i + '.jpg')
+                    .cover

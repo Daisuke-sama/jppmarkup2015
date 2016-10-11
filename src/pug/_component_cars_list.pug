@@ -1,0 +1,126 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 19-Aug-16.
+
+    Template chunk for list of cars. Used on stock list page and auction page.
+
+.left.floated.block
+    h1 Nissan for sale
+.right.floated.block
+    include _component_currency
+.clearfix
+
+.cars.list.block
+    .toolbar.mobile.or.lower.hidden
+        .heading Sorting options
+        ul.options.inline.list
+            li.option
+                |Grade
+                a(href=''): i.ui.icon.caret.up
+                a(href=''): i.ui.icon.caret.down
+            li.option
+                |Price
+                a(href=''): i.ui.icon.caret.up
+                a(href=''): i.ui.icon.caret.down
+            li.option
+                |Year
+                a(href=''): i.ui.icon.caret.up
+                a(href=''): i.ui.icon.caret.down
+            li.option
+                |Steer.
+                a(href=''): i.ui.icon.caret.up
+                a(href=''): i.ui.icon.caret.down
+            li.option
+                |Displ.
+                a(href=''): i.ui.icon.caret.up
+                a(href=''): i.ui.icon.caret.down
+            li.option
+                |Mileage
+                a(href=''): i.ui.icon.caret.up
+                a(href=''): i.ui.icon.caret.down
+
+    .listing
+        .car
+            .img.left.floated.overflow.block
+                .img-clip-4by3
+                    img(src='img/auto7.jpg')
+                .indicator.large.screen.hidden.widescreen.hidden sold
+            .name Nissan skyline GT-R
+            .stockno Stock No:
+                span 26667
+            .characteristics
+                table.table
+                    tr
+                        td
+                            table
+                                tr
+                                    td.type Year
+                                    td.value 2002
+                                tr
+                                    td.type Mileage, miles
+                                    td.value 30000
+                                tr
+                                    td.type Mileage, km
+                                    td.value 65000
+                        td
+                            table
+                                tr
+                                    td.type Type
+                                    td.value BNR34
+                                tr
+                                    td.type Engine
+                                    td.value RB26
+                                tr
+                                    td.type Displ.
+                                    td.value 2600cc
+                        td
+                            table
+                                tr
+                                    td.type Turbo
+                                    td.value Yes
+                                tr
+                                    td.type 4WD
+                                    td.value Yes
+                                tr
+                                    td.type Steering
+                                    td.value Right
+            .price
+                .accessibility.no.large.screen.only.widescreen.only sold
+                //.accessibility.yes Available
+
+        - for (var i = 0; i <= 9; i++)
+            include _component_car_from_stocklist
+
+    .pagination
+        ul.inline.list
+            +formix(1,6,'<a href="#"><li>#</li></a>')
+            a(href='#')
+                li.next Next
+                    i.ui.icon.chevron.right
+            a(href='#')
+                li.prev
+                    i.ui.icon.chevron.left
+                    |Previous
+
+    // GALLERY TABLET MOBILE
+    .widescreen.hidden.large.screen.hidden
+        include _component_simple_slider
+
+    .info.block.widescreen.hidden.large.screen.hidden
+        h2 SHIPMENT OPTIONS
+        .block
+            p RO-RO shipment is the most convenient and usually cheapest option. Available for the most major port.
+            p Containerized shipment is an option when RO-RO shipment isn’t available, but is usually more expensive if you buy just one vehicle. If you buy more than one vehicle we can fit 2 small cars in one 20ft container and 3-4 cars in one 40ft container. If you are wholesale buyer shipment in containers may be even more profitable.
+            p If you buy cars for parts to be dismantled, tractors, forklifts and other machinery, containerized shipment is the only available option.
+            p #[a(href='#') REGISTER] at our website and shipment will be calculated automatically for the port you choose.
+
+    .info.block.widescreen.hidden.large.screen.hidden
+        h2 ABOUT NISSAN CAR MANUFACTURER
+        .block
+            p Nissan Motor Company Ltd.  is a Japanese multinational automobile manufacturer headquartered in Nishi-ku, Yokohama, Japan. Since 1999, Nissan has been part of the Renault–Nissan Alliance, a partnership between Nissan and French automaker Renault.
+            p Nissan is the sixth largest automaker in the world (2013) behind Toyota, General Motors, Volkswagen Group, Hyundai Motor Group, and Ford
+            p Slogans:
+                br/ NISSAN, RENAISSANCE (2000-2001)
+                br/ SHIFT_the future (2001-2008)
+                br/ SHIFT_the way you move (2008-2012)
+                br/ SHIFT_ (2012-2013)
+                br/ Innovation that excites (2013-present)

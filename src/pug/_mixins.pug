@@ -1,0 +1,13 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 16-Aug-16.
+
+    Useful functions for templates generation.
+    Included in the _layoutBase file by default.
+
+//-
+    This function understands only native html strings,
+    not in jade/pug or even interpolation
+
+mixin formix(from, to, string)
+    - for (var i = from; i <= to; i++)
+        != string

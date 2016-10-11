@@ -1,0 +1,11 @@
+/**
+ * Created by Royal PR (Paul Burilichev) on 15-Aug-16.
+ */
+
+.ui.divided.grid:not([class*="vertically divided"])>.column:not(.row),
+.ui.divided.grid:not([class*="vertically divided"])>.row>.column {
+  @media screen and (max-width: 1199px) {
+    @include boxShadow(none);
+  }
+}
+

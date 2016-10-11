@@ -5,6 +5,7 @@
          Contains header, footer and etc. parts.
 
 include _variables
+include _mixins
 
 doctype html
 html(class='no-js', lang='en')
@@ -24,3 +25,5 @@ html(class='no-js', lang='en')
 
         block footer
             include _component_footer
+
+        include _component_to_top_button

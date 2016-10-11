@@ -1,0 +1,107 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 18-Aug-16.
+    http://rpr.by
+
+    FILE DESCRIPTION: This is a profile settings template.
+
+extends _layoutBase
+
+block pageTitle
+    title Cat's profile
+
+block allContent
+    .ui.container.page
+
+        // BREADCRUMBS
+        .breadcrumbs
+            ul.path
+                li: a(href='#') Home
+                li: a(href='#') Profile
+                li.active: a(href='#') Cat's frank
+
+        #profile
+            .ui.padded.grid
+                .sixteen.wide.mobile.six.wide.tablet.six.wide.computer.four.wide.large.screen.four.wide.widescreen.column.padding-no-by-side.mobile
+
+                    // USER PROFILE
+                    .profile.info
+                        .ui.padded.grid
+                            .six.wide.column
+                                img.rounded.photo.fluid.block(src='img/profile-photo.jpg')
+                            .ten.wide.column
+                                p.name Frank
+                                p.surname Sinatra
+                                p.login japanese
+
+                        // PROFILE MENU
+                        .ui.vertical.menu.fluid.block
+                            a(href='#').item account settings
+                            a(href='#').item other list
+                            a(href='#').item other products
+                            a(href='#').item other
+                        p.right.text
+                            i.sign.out.icon
+                            a(href='#') log out
+
+                    .info.block
+                        .h6 something important
+                        p RO-RO shipment is the most convenient and usually cheapest option. Available for the most major port.
+                        p Containerized shipment is an option when RO-RO shipment isn’t available, but is usually more expensive if you buy just one vehicle. If you buy more than one vehicle we can fit 2 small cars in one 20ft container and 3-4 cars in one 40ft container. If you are wholesale buyer shipment in containers may be even more profitable.
+                        p If you buy cars for parts to be dismantled, tractors, forklifts and other machinery, containerized shipment is the only available option.
+
+                .sixteen.wide.mobile.ten.wide.tablet.ten.wide.computer.twelve.wide.large.screen.twelve.wide.widescreen.column.padding-no-by-side.mobile
+                    .h3 profile settings
+                    .settings.block
+                        .user.form.block
+                            .h1 edit profile
+                            form
+                                .ui.input.margin.to.label
+                                    .inline.block
+                                        input#isindividual(type='radio' checked)
+                                        label.inline.block(for='isindividual') Individual
+                                    .inline.block
+                                        input#iscompany(type='radio' checked)
+                                        label.inline.block(for='isindividual') Company
+                                .ui.fluid.input
+                                    label(for='companyname') Company name
+                                    input#companyname(type='text' placeholder='Type your company name')
+                                .ui.fluid.icon.input
+                                    label(for='uname') First name
+                                    input#uname(type='text' placeholder='Type your first name' required)
+                                    i.ui.asterisk.icon
+                                .ui.fluid.icon.input
+                                    label(for='surname') Surname
+                                    input#surname(type='text' placeholder='Type your surname' required)
+                                    i.ui.asterisk.icon
+                                button(type='submit') submit
+
+                        .user.form.block
+                            .h1 Billing address
+                            form
+                                .ui.fluid.icon.input
+                                    label(for='uaddress') Your address
+                                    input#uaddress(type='text' placeholder='Type your address' required)
+                                    i.ui.asterisk.icon
+                                .ui.fluid.icon.input
+                                    label(for='ucity') Your city
+                                    input#ucity(type='text' placeholder='Type your city' required)
+                                    i.ui.asterisk.icon
+                                .ui.fluid.icon.input
+                                    label(for='ustate') Your state
+                                    input#ustate(type='text' placeholder='Type your state' required)
+                                    i.ui.asterisk.icon
+                                .ui.fluid.icon.input
+                                    label(for='uzip') Your zip/postal code
+                                    input#uzip(type='text' placeholder='Type your zip/postal code' required)
+                                    i.ui.asterisk.icon
+                                .ui.fluid.icon.input
+                                    label(for='ucountry') Your country
+                                    select#ucountry
+                                        option Uganda
+                                        option USA
+                                        option Other
+                                button(type='submit') submit
+
+            .border.bottom.px.margin-no.block
+
+            include _component_last_recommend

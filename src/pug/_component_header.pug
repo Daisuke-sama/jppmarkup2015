@@ -19,11 +19,7 @@ header
                                 .ui.fluid.icon.input
                                     input(type='password', placeholder='Your password' required)
                                     i.asterisk.icon(class='red text')
-                                .ui.fluid.icon.input
-                                    input(type='text', placeholder='EXAMPLE OF SUCCESS!!')
-                                    i.plus.icon(class='green text')
-                                p
-                                    a(href='#') Forgot password?
+                                p: a(href='#') Forgot password?
                                 a.small.fluid.green.button Log in
 
                             .ui.horizontal.divider.text.white Or
@@ -38,21 +34,22 @@ header
                             .ui.horizontal.divider.text.white.h3 This after login
 
                             //- PLACE THIS INSTEAD OF LOGIN FORM AFTER USER AUTHORIZATION
-                            .ui.grid
-                                .six.wide.column.padding-no-right
-                                    img.rounded.photo.fluid.block(src='img/profile-photo.jpg')
-                                .ten.wide.column.padding-no-left
-                                    p.name Frank
-                                    p.surname Sinatra
-                                    p.login japanese
-                            .ui.vertical.menu.fluid.block
-                                a.item account settings
-                                a.item other list
-                                a.item other products
-                                a.item other
-                            p.right.text
-                                i.sign.out.icon
-                                a(href='#') log out
+                            .profile.info
+                                .ui.grid
+                                    .six.wide.column.padding-no-right
+                                        img.rounded.photo.fluid.block(src='img/profile-photo.jpg')
+                                    .ten.wide.column.padding-no-left
+                                        p.name Frank
+                                        p.surname Sinatra
+                                        p.login japanese
+                                .ui.vertical.menu.fluid.block
+                                    a(href='#').item account settings
+                                    a(href='#').item other list
+                                    a(href='#').item other products
+                                    a(href='#').item other
+                                p.right.text
+                                    i.sign.out.icon
+                                    a(href='#') log out
 
                     a.button.small.transparent.text.white.margin-no.
                         Contact Us
@@ -63,23 +60,32 @@ header
                     .sixteen.wide.computer.seven.wide.large.screen.seven.wide.widescreen.column
                         .ui.grid
                             .bottom.aligned.row.padding-no-bottom
-                                .three.wide.tablet.three.wide.computer.five.wide.large.screen.five.wide.widescreen.column.padding-no
-                                    img(src='img/logo-small.png')
-                                .eight.wide.tablet.eight.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column.padding-no
-                                    .company.label
-                                        b.text.uppercase japan partner
-                                        h4.description.text.grey japanese used car exporter
-                                            span.text.right.light.grey.lowercase.mobile.or.lower.hidden since 2003
 
-                                .micro-mobile.only.mobile.only.tablet.only.computer.only.facebook.wrapper.block
-                                    include _component_facebook
+                                // LOGOTYPE
+                                .logo.three.wide.tablet.three.wide.computer.five.wide.large.screen.five.wide.widescreen.column.padding-no
+                                    a.item(href='index.html'): img(src='img/logo-small.png')
+                                .logo.eight.wide.tablet.eight.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column.padding-no
+                                    a.item(href='index.html')
+                                        .company.label
+                                            b.text.uppercase japan partner
+                                            h4.description.text.grey japanese used car exporter
+                                                span.text.right.light.grey.lowercase.mobile.or.lower.hidden since 2003
+
+                                //.micro-mobile.only.mobile.only.tablet.only.computer.only.facebook.wrapper.block
+                                //    include _component_facebook
 
                     .sixteen.wide.computer.nine.wide.large.screen.nine.wide.widescreen.column
                         nav.ui.four.item.small.menu
-                            a.ui.dropdown.item Menu Menu 1
+                            .ui.dropdown.item Complete pages
                                 .menu
-                                    - for(var i = 0; i < 6; i++)
-                                        .item Point PointPoint #{i+1}
+                                    .triangle.centered.block
+                                    a.item(href='index.html') Main page
+                                    a.item(href='stocklist.html') Stocklist
+                                    a.item(href='stockcar.html') Stock Car
+                                    a.item(href='auctioncar.html') Auction Car
+                                    a.item(href='registration.html') Registration
+                                    a.item(href='profile.html') Profile
+                                    a.item(href='blogpage.html') Blog page
                             - for(var i = 1; i < 4; i++)
                                 a.ui.dropdown.item Menu Menu #{i+1}
 

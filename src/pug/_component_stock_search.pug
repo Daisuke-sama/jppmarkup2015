@@ -1,0 +1,55 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 18-Aug-16.
+
+    Chunk for the search form of the stock list.
+
+.stock.search.left.floated.overflow.block
+    form
+        .row
+            label(for='name') Name
+            select(id='name')
+                +formix(1,20,'<option>my Name</option>')
+        .row
+            label(for='model') Model
+            select(id='model')
+                +formix(1,20,'<option>my Model</option>')
+        .row
+            label(for='steering') Steering
+            select(id='steering')
+                +formix(1,20,'<option>my Steering</option>')
+        .row
+            label(for='transmission') Transmission
+            select(id='transmission')
+                +formix(1,20,'<option>my Transmission</option>')
+        .row
+            label(for='drive') Drive
+            select(id='drive')
+                +formix(1,20,'<option>my Drive</option>')
+        .row
+            label(for='fuel') Fuel
+            select(id='fuel')
+                +formix(1,20,'<option>my Fuel</option>')
+        .row
+            label(for='displayment1') Displayment
+            select.half.width(id='displayment1')
+                +formix(1,20,'<option>From</option>')
+            span -
+            select.half.width(id='displayment2')
+                +formix(1,20,'<option>To</option>')
+        .row
+            label(for='year1') Year
+            select.half.width(id='year1')
+                +formix(1,20,'<option>From</option>')
+            span -
+            select.half.width(id='year2')
+                +formix(1,20,'<option>To</option>')
+        .row
+            label(for='price1') Price
+            select.half.width(id='price1')
+                +formix(1,20,'<option>From</option>')
+            span -
+            select.half.width(id='price2')
+                +formix(1,20,'<option>To</option>')
+        button.ui.icon.button.green.text.uppercase.right.floated.block
+            i.search.icon
+            | Search

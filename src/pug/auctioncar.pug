@@ -1,0 +1,129 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 17-Aug-16.
+
+    This is a template for the auction car's description.
+
+extends _layoutBase
+
+block pageTitle
+    title This is a car from the auction
+
+block allContent
+    #auctioncar
+        .ui.container.page
+
+            // BREADCRUMBS
+            .breadcrumbs.block
+                ul.path
+                    li: a(href='#') Japanese used cars
+                    li: a(href='#') Used cars auctions
+                    li.active: a(href='#') #23001
+
+            .ui.padded.grid
+                .row.border.bottom.px.block
+                    .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column.padding-no-by-side.mobile
+
+                        // MAIN SPECS
+                        .main.block
+                            h2 main specs
+                            .two.columns.specs
+                                - for (i = 1; i <= 20; i++)
+                                    .block
+                                        .name Grade
+                                        .value: b Gt-r twinturbo
+
+                        // IMAGES
+                        .images.ui.stackable.grid
+                            .six.wide.column.padding-no-right
+                                .small
+                                    a(href='img/auto11.jpg' data-lity)
+                                        .img-clip-4by3
+                                            img(src='img/auto11.jpg')
+                                    a(href='img/auto6.jpg' data-lity)
+                                        .img-clip-4by3
+                                            img(src='img/auto6.jpg')
+                                    a(href='img/auto12.jpg' data-lity)
+                                        .img-clip-4by3
+                                            img(src='img/auto12.jpg')
+                            .ten.wide.column
+                                img.fluid.block(src='img/auction-item-description.jpg')
+
+                    .sixteen.wide.computer.five.wide.large.screen.five.wide.widescreen.column.padding-no-by-side.mobile
+                        .ui.grid
+                            .row
+                                .sixteen.wide.mobile.eight.wide.tablet.eight.wide.computer.sixteen.wide.large.screen.sixteen.wide.widescreen.column
+
+                                    // DESCRIPTION BLOCK
+                                    .description.block
+                                        .stockno.right.aligned.uppercase.text.block STOCK NO 26400
+                                        h1 TOYOTA PRIUS ALPHA
+                                        .data.block
+                                            .important.name start price
+                                            .important.value $4500
+                                        .data.block
+                                            .name average price
+                                            .value $4500
+                                        .data.block
+                                            .name your planned bid
+                                            .input
+                                                input(type='number', placeholder='4500')
+                                            .value $
+                                        .data.block
+                                            .name auction fee
+                                            .value $45
+                                        .data.block
+                                            .name inland delivery
+                                            .value $150
+                                        .data.block
+                                            .name sales tax
+                                            .value $140
+                                        .data.block
+                                            .name japan partner fee
+                                            .value $350
+                                        .data.block
+                                            .name fob charge
+                                            .value $450
+                                            .input
+                                                input(type='checkbox', checked)
+                                        .data.block
+                                            .name ocean freight canada - vancouver
+                                            .value $1100
+                                            .input
+                                                input(type='checkbox', checked)
+                                            a.blue.text.block(href='#') click here to change your port
+                                        .data.block
+                                            .important.name total
+                                            .important.value $11200
+                                        .ui.divider
+                                        .data.block
+                                            .important.name your deposit $0
+                                        .data.block
+                                            .important.red.text.name required deposit to bid $3000
+                                            a.blue.text.block(href='#') refunding policy
+                                        .action.block
+                                            .small.green.button sign up to auction service
+                                            .subaction
+                                                a.blue.text(href='#' onclick='alert("Don\'t stop!");') Add to watchlist
+                                                span |
+                                                a.blue.text(href='#') Contact us
+                                            .centered.block
+                                                include _component_currency
+
+                                .sixteen.wide.mobile.eight.wide.tablet.eight.wide.computer.sixteen.wide.large.screen.sixteen.wide.widescreen.column
+
+                                    // INFORNATION
+                                    .info.block
+                                        h2 FINAL PRICE EXPLANATION
+                                        +formix(1,4, '<p>Japan Partner cannot guarantee quality of vehicles arrived from auction. You have to rely on information provided by auction houses.</p>')
+
+                                    .right.aligned.text.block
+                                        a.blue.text(href='#') Terms of service
+
+                                    .info.block
+                                        h2 auction terms
+                                        +formix(1,4, '<p>Japan Partner cannot guarantee quality of vehicles arrived from auction. You have to rely on information provided by auction houses.</p>')
+
+                                    .right.aligned.text.block
+                                        a.blue.text(href='#') Terms of service
+
+            include _component_last_recommend

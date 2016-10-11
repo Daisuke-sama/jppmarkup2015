@@ -5,13 +5,17 @@
 @import "variables";
 @import "mixins";
 @import "helper_styles";
+@import "overrides";
 @import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
 
 
 // icon-font
 @include font-face('Icons', 'fonts/icons', normal, normal, $file-formats: eot woff2 woff otf svg);
 
+
 html {
+  body { position: relative; }
+
   font-family: $helvetica;
   font-size: $em-base;
 
@@ -42,9 +46,27 @@ html {
 
   #{$all-text-inputs},
   #{$all-button-inputs},
-  #{$all-buttons} {
+  #{$all-buttons},
+  select {
     border-radius: 0 !important;
     border-width: 2px !important;
+  }
+
+  #{$all-text-inputs},
+  select {
+    border: 1px solid rgba(34,36,38,0.15);
+  }
+
+  #{$all-text-inputs} {
+    &.success {
+      color: $greenBackgroundHover;
+      border-color: $greenBackgroundHover;
+    }
+
+    &.error {
+      color: $redText;
+      border-color: $redBackground;
+    }
   }
 
   a { @extend .link; }
@@ -53,6 +75,10 @@ html {
 /* Header block definition. */
 header {
   margin-bottom: $marginBlock;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: -2rem;
+  }
 
   #user-menu {
     background-color: $greyBackground;
@@ -97,15 +123,7 @@ header {
 
         a.button { @extend .margin-no; }
 
-        .rounded.photo { border-radius: 50%; }
-
-        .vertical.menu {
-          border-radius: 0;
-          background-color: inherit;
-          border: none;
-
-          @include boxShadow(none);
-
+        .profile.info {
           .item { color: $white; }
         }
       }
@@ -121,6 +139,22 @@ header {
     padding: 0 $paddingBlock;
     background-color: $white;
 
+    .logo {
+      a {
+        text-decoration: none;
+
+        &:hover { color: inherit; }
+      }
+
+      @media screen and (max-width: 767px) {
+        @include align-self(flex-start !important);
+
+        img {
+          max-width: 133%;
+        }
+      }
+    }
+
     img { display: block; }
 
     .facebook.wrapper {
@@ -134,11 +168,16 @@ header {
     }
 
     .company.label {
+      @media screen and (max-width: 767px) {
+        text-align: right;
+      }
+
       b { font-size: modular-scale(1.3); }
 
       .description {
         display: inline-block;
         position: relative;
+        margin-top: 0;
         margin-bottom: 1rem;
 
         span {
@@ -152,16 +191,20 @@ header {
     }
 
     nav {
-      z-index: 500;
       margin-top: $marginElement;
       border: none;
       box-shadow: none;
+      z-index: 900;
 
       @media screen and (max-width: 767px) {
         @include display(flex);
         @include flex-wrap(wrap);
 
-        .item.dropdown { min-width: 50%; }
+        .dropdown.item {
+          min-width: 50%;
+
+          & > .menu { z-index: 950; }
+        }
       }
 
       .item {
@@ -170,7 +213,9 @@ header {
         color: $blueText;
         line-height: modular-scale(1);
 
-        @include transitionElement(background-color);
+        @media screen and (max-width: 767px) {
+          &::before { display: none; }
+        }
 
         &:hover {
           background-color: $redBackground;
@@ -178,9 +223,25 @@ header {
         }
 
         &.dropdown .menu {
+          border-top: none;
           border-radius: 0 !important;
 
-          & > .item { text-transform: capitalize; }
+          .triangle.centered.block {
+            width: 10px;
+            height: 10px;
+            border: 10px solid $redBackground;
+            border-bottom: none;
+            border-left: 10px solid white;
+            border-right: 10px solid white;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          & > .item {
+            text-transform: capitalize;
+
+            &:first-of-type { margin-top: -10px; }
+          }
         }
       }
     }
@@ -199,8 +260,11 @@ footer {
     @media screen and (min-width: 768px) and (max-width: 1024px) {
       @include column-count(2);
     }
+
     @media screen and (max-width: 767px) {
       @include column-count(1);
+
+      text-align: center !important;
     }
 
     p {
@@ -212,12 +276,15 @@ footer {
 }
 
 
-.page {
-  margin-top: $marginBlock;
-  background-color: $white;
-}
+/**************************************
+ * STYLES FOR PAGES' SPECIFIC BLOCKS. */
 
+/* Main page's styles. */
 #main {
+  @media screen and (max-width: 767px) {
+    margin-top: 2rem;
+  }
+
   h1,
   h2,
   h5,
@@ -258,6 +325,13 @@ footer {
       padding: 0 $paddingBlock $paddingBlock $paddingBlock;
       background-color: $white;
 
+      .dealers.five.columns {
+        @media screen and (min-width: 1199px) {
+          margin-left: -1rem;
+          margin-right: -1rem;
+        }
+      }
+
       @media screen and (min-width: 768px) and (max-width: 1199px) {
         padding-top: $paddingBlock;
         padding-bottom: 0;
@@ -269,7 +343,13 @@ footer {
     }
   }
 
-  #banners {
+  .banners {
+    @media screen and (min-width: 1200px) {
+      width: 1127px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    
     .carousel {
       position: relative;
 
@@ -340,20 +420,6 @@ footer {
     }
   }
 
-  .review.block {
-    margin-top: $marginBlock;
-
-    @media screen and (max-width: 767px) {
-      margin-top: 0;
-    }
-
-    .read.more {
-      color: $blueText;
-
-      &:hover { color: $blueTextHover; }
-    }
-  }
-
   .cars.list {
     @media screen and (min-width: 768px) and (max-width: 1199px) {
       margin-top: 1rem;
@@ -367,16 +433,421 @@ footer {
         margin-top: 2rem;
         margin-left: 0;
         margin-right: 0;
+        font-size: 1rem;
+        font-weight: bold;
       }
     }
   }
 
   .news.list {
-    h2 { margin-bottom: 1rem; }
+    @media screen and (max-width: 767px) {
+      .h3 {
+        margin: 0 !important;
+      }
+    }
   }
 }
 
+
+/* Stock list page. */
+#stocklist {
+  .dealers {
+    @media screen and (max-width: 1199px) {
+      margin-top: 0;
+    }
+  }
+}
+
+
+/* Stock list page and blog page general styles. */
+#stocklist,
+#blogpage {
+  h1,
+  h2 {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  // depends on .static.next.slide button of carousel
+  .facebook.block {
+    margin-top: 1.5rem;
+  }
+
+  .ui.divider ~ #last-recommended {
+    margin-top: -1rem;
+  }
+}
+
+
+/* Stock car page and Auction car page. */
+#stockcar,
+#auctioncar {
+  h2 { font-weight: bold; }
+
+  .main,
+  .condition,
+  .options {
+    margin: 1rem 0;
+    
+    h2 { margin-bottom: 1rem; }
+
+    .additional { margin-top: 1rem; }
+  }
+
+  .slider.block {
+    margin-top: -2rem;
+
+    @media screen and (max-width: 767px) {
+      margin-left: -1rem;
+      margin-right: -1rem;
+    }
+  }
+
+  .description.block {
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      width: 50%;
+      margin-right: auto !important;
+      margin-left: auto !important;
+    }
+
+    h1 {
+      margin: 1rem 0;
+      font-weight: bold;
+    }
+
+    .data.block {
+      margin: $marginElement/2 0;
+
+      .name,
+      .value,
+      input {
+        display: inline-block;
+        text-transform: uppercase;
+
+        &.important {
+          @extend .h3;
+        }
+      }
+
+      input {
+        &[type='number'],
+        &[type='text'] {
+          width: 100%;
+          margin-top: -.1rem;
+          padding-left: .5rem;
+        }
+
+        &[type='checkbox'] {
+          margin-top: .2rem;
+          margin-right: 1rem;
+        }
+      }
+
+      .name { max-width: 70%; }
+
+      .value,
+      .input { float: right; }
+
+      .input { max-width: 30%; }
+    }
+
+    .action.block {
+      text-align: center;
+
+      .button {
+        min-width: 60%;
+
+        @extend .h3;
+      }
+
+      .subaction {
+        span { margin: 0 .3rem; }
+      }
+
+      .currency.block { margin-top: 0.5rem; }
+    }
+  }
+
+  .blue.claim.block {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: $blueBackground;
+    color: $white;
+    overflow: auto;
+
+    .links {
+      float: left;
+      width: 70%;
+
+      a {
+        font-size: .8rem;
+        line-height: 1.2;
+        display: block;
+      }
+    }
+
+    .icon {
+      display: block;
+      float: right;
+      margin-top: 1rem;
+      margin-right: 2.5rem;
+
+      &:before {
+        font-size: 5rem;
+      }
+    }
+  }
+}
+
+
+/* Auction car page. */
+#auctioncar {
+  @media screen and (max-width: 1199px) {
+    .description.block {
+      width: 100%;
+    }
+
+    .stockno {
+      text-align: left;
+      margin-top: .5rem;
+      margin-bottom: -1rem;
+    }
+  }
+
+  .images {
+    margin-top: 2rem;
+
+    .small {
+      margin-top: -.5rem;
+    }
+  }
+}
+
+
+/* Profile page styles. */
+#profile {
+
+  .settings.block {
+    .user.form.block {
+
+      .margin.to.label {
+        margin-left: 35%;
+
+        @media screen and (max-width: 767px) {
+          margin-left: 0;
+        }
+      }
+
+      input[type='radio'] {
+        & ~ label {
+          font-size: 1rem;
+          width: auto;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+
+/* Blog page styles. */
+#blogpage {
+  .content.block {
+    a {
+      color: $blueText;
+
+      @include transitionElement(color);
+
+      &:hover { color: $blueTextHover; }
+    }
+
+    img { margin: 1rem 0; }
+
+    .centered.form {
+      width: 50%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+    }
+
+    .img-clip-4by3 {
+      img {
+        top: 0;
+      }
+    }
+
+    .gallery.block .thumbnails {
+      margin-top: -2.5rem;
+    }
+  }
+}
+
+
+/**************************************
+ * STYLES FOR A FEW TIME USED BLOCKS. */
+
+.page {
+  margin-top: $marginBlock;
+  background-color: $white;
+}
+
+
+/* Describes styles for inputs on user page. */
+.user.form.block {
+  margin: 1rem 0 0 0;
+
+  .h1 {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    margin: 0;
+    padding: 1rem;
+    background-color: $veryLightGreyBackground;
+
+    i.asterisk.icon { color: $redText; }
+
+    .input {
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+
+      label {
+        width: 35%;
+        line-height: 1.2142em;
+        margin: 2px 0;
+        padding: .67em .5em .67em 0;
+        
+        @media screen and (max-width: 767px) {
+          font-size: .9rem;
+        }
+      }
+
+      input[type='radio'] {
+        display: inline-block;
+
+        & ~ label {
+          font-size: .7rem;
+          width: 80%;
+          margin-left: 2rem;
+          display: inline-block;
+        }
+      }
+
+      select {
+        display: inline-block;
+        width: 100%;
+        margin-left: 12%;
+
+        @media screen and (max-width: 767px) {
+          margin-left: 11%;
+        }
+      }
+    }
+
+    button[type='submit'],
+    input[type='submit'] {
+      display: block;
+      font: {
+        size: $em-base;
+        weight:bold;
+      }
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      width: 100%;
+      padding: $paddingElement;
+      border: none;
+      background-color: $greenBackground;
+      color: $white;
+
+      @include transitionElement(background-color);
+
+      &:hover { background-color: $greenBackgroundHover; }
+    }
+  }
+}
+
+
+/* Styles for an user's photo and menu of a profile. */
+.profile.info {
+  .rounded.photo {
+    margin-top: 1rem;
+    margin-right: .5rem;
+    border-radius: 50%;
+  }
+
+  .vertical.menu {
+    border-radius: 0;
+    background-color: inherit;
+    border: none;
+
+    @include boxShadow(none);
+  }
+}
+
+
 /* Universal across-site definitions. */
+.breadcrumbs {
+  background-color: $pageGreyBackground;
+  width: 100%;
+
+  @media screen and (max-width: 1199px) {
+    background-color: $white;
+  }
+
+  ul {
+    display: inline-block;
+    text-transform: inherit;
+
+    &.path {
+      li:not(:last-of-type)::after {
+        margin-left: 0.5rem;
+        content: '>';
+      }
+    }
+
+    &.top.search {
+      li {
+        &::after {
+          margin-left: 0.5rem;
+          content: '|';
+        }
+
+        &:last-of-type::after { content: ''; }
+      }
+    }
+
+    li {
+      display: inline-block;
+      margin-right: 0.5rem;
+
+      &.active {
+        background-color: $greyBackground;
+        padding: $paddingElement/2 $paddingElement;
+        color: $white;
+        text-transform: uppercase;
+
+        @include border-top-radius(1rem);
+
+        & a { text-decoration: none !important; }
+
+        &.white {
+          background-color: $white;
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+
+
+/* Classic search input on main page on top
+ * and on every page at bottom. */
 .search.box {
   @media screen and (min-width: 1200px) {
     .footer {
@@ -395,9 +866,13 @@ footer {
       }
     }
 
-    a > i.icon {
-      margin-top: -.3em;
-      margin-right: .5em;;
+    a {
+      border-radius: 0 !important;
+
+      & > i.icon {
+        margin-top: -.3em;
+        margin-right: .5em;;
+      }
     }
   }
 
@@ -482,21 +957,89 @@ footer {
   }
 }
 
-.dealers {
-  @include column-gap(.5rem);
 
+/* Describes styles of full form of search
+ * with special inputs. */
+.stock.search {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba($greyBackground, 0.15);
+
+  @media screen and (max-width: 767px) {
+    padding: 0;
+    border: none;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    form {
+      @include column-count(2);
+    }
+  }
+
+  .row {
+    margin-bottom: .5rem;
+
+    label,
+    select,
+    input {
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    label {
+      width: 40%;
+
+      @media screen and (max-width: 767px) {
+        width: 35%;
+        font-size: .8rem;
+      }
+    }
+
+    select,
+    input {
+      width: 58%;
+      border-radius: .2rem;
+      padding: .3rem;
+
+      @media screen and (max-width: 767px) {
+        width: 63%;
+      }
+
+      &.half.width {
+        width: 25%;
+
+        @media screen and (max-width: 767px) {
+          width: 27.5%;
+        }
+
+        & ~ span {
+          display: inline-block;
+          margin: 0 .3rem 0 .5rem;
+        }
+      }
+
+      &:focus, &:active {
+        background-color: $yellowText;
+      }
+    }
+  }
+}
+
+
+/* List of dealers on pages of car list and main page. */
+.dealers {
+  margin-bottom: -1rem;
   color: $blueText;
 
-  @extend .h2;
+  @include column-gap(.5rem);
+
   text-transform: capitalize;
 
+  p { margin-top: 0; }
 
   @media screen and (max-width: 1199px) {
     font-size: 1rem;
-
-    p:first-of-type {
-      margin-top: 0;
-    }
+    margin-bottom: 0;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1199px) {
@@ -535,6 +1078,277 @@ footer {
   }
 }
 
+
+/* List of cars from stocklist. */
+.cars.list.block {
+  .toolbar {
+    padding: $paddingElement/2 $paddingElement;
+    background-color: $greyBackground;
+    color: $white;
+    font-size: .8rem;
+
+    .heading {
+      display: inline-block;
+    }
+
+    .options {
+      float: right;
+      padding-left: .5rem;
+
+      .option {
+        i:first-of-type { margin-left: .2rem; }
+        i { margin-right: 0; }
+
+        a { text-decoration: none; }
+      }
+    }
+  }
+
+  .listing {
+    margin-top: 0.5rem;
+    border-top: solid 1px rgba($greyBackground, 0.15);
+
+    .car {
+      position: relative;
+      font-size: 1rem;
+      border-bottom: solid 1px rgba($greyBackground, 0.15);
+      margin: $marginElement/2 $marginElement/2 $marginElement/2 0;
+      padding-bottom: $paddingElement/2;
+      overflow: auto;
+
+      @media screen and (max-width: 767px) {
+        margin-right: 0;
+        font-size: .9rem;
+      }
+
+      .img.block {
+        position: relative;
+        width: 20%;
+        margin-top: -.3rem;
+        margin-right: 1rem;
+
+        @media screen and (max-width: 1199px){
+          width: 25%;
+        }
+
+        @media screen and (max-width: 1199px) and (orientation: landscape) {
+          width: 20%;
+        }
+
+        @media screen and (max-width: 767px) and (orientation: portrait) {
+          width: 50%;
+          margin-right: .5rem;
+        }
+
+        .indicator {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          bottom: 0;
+          padding: 0.3rem 1rem;
+          text-transform: uppercase;
+          text-align: center;
+          color: $white;
+          background-color: $redBackground;
+          font-weight: bold;
+
+          @media screen and (max-width: 767px) and (orientation: portrait) {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .name {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: $blueText;
+
+        @media screen and (max-width: 767px) and (orientation: portrait) {
+          font-size: 1rem;
+        }
+
+        @media screen and (max-width: 767px) and (orientation: landscape) {
+          max-width: 60%;
+        }
+      }
+
+      .watchlist {
+        visibility: hidden;
+        font-weight: bold;
+        color: $orangeText;
+        text-decoration: underline;
+        font-size: 1rem * 1.2;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        @media screen and (max-width: 1199px) {
+          visibility: visible;
+          font-size: 1rem;
+        }
+
+        @media screen and (max-width: 767px) and (orientation: portrait) {
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: 1.5rem;
+          padding: 0;
+        }
+
+        &:hover { color: $orangeTextHover; }
+      }
+
+      &:hover .watchlist { visibility: visible; }
+
+      .stockno {
+        margin-top: .5rem;
+
+        @media screen and (max-width: 767px) and (orientation: portrait) {
+          margin-top: 0;
+        }
+      }
+
+      .characteristics {
+        font-size: 1rem;
+        font-weight: normal;
+
+        @media screen and (max-width: 767px) {
+          font-size: .8rem;
+        }
+
+        @media screen and (max-width: 767px) and (orientation: portrait) {
+          display: block;
+          margin-left: 53%;
+        }
+
+        table.table {
+          width: auto;
+          border: none;
+          padding: 0;
+
+          @media screen and (max-width: 767px) and (orientation: portrait) {
+            width: 100% !important;
+          }
+
+          tr {
+            @media screen and (max-width: 767px) and (orientation: portrait) {
+              padding: 0;
+              box-shadow: none !important;
+              line-height: .9rem;
+              display: inline-block !important;
+              width: 100% !important;
+            }
+
+          }
+
+          td {
+            padding: 0 1rem 0 0;
+
+            @media screen and (max-width: 1199px) {
+              padding-right: 0.5rem;
+            }
+
+            @media screen and (max-width: 767px) and (orientation: portrait) {
+              display: inline-block !important;
+              padding: 0 !important;
+            }
+          }
+        }
+
+        .type {
+          font-weight: normal !important;
+
+          &::after {
+            content: ":";
+          }
+        }
+
+        .value {
+          font-weight: bold;
+          text-align: right;
+
+          @media screen and (max-width: 767px) and (orientation: portrait) {
+            float: right;
+          }
+        }
+      }
+
+      .price {
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: $blueText;
+        font-size: 1.3rem;
+        font-weight: bold;
+
+        @media screen and (max-width: 767px) and (orientation: portrait) {
+          top: inherit;
+          left: 0;
+          bottom: .2rem;
+        }
+
+        .accessibility {
+          position: absolute;
+          right: 0;
+
+          @media screen and (max-width: 767px) and (orientation: portrait) {
+            left: 0;
+          }
+
+          &.yes {
+            top: 1.5rem;
+
+              @media screen and (max-width: 767px) and (orientation: portrait) {
+                display: none;
+              }
+          }
+
+          &.no {
+            text-transform: uppercase;
+            color: $redText;
+          }
+        }
+      }
+    }
+  }
+
+  .pagination {
+    margin-top: 1rem;
+
+    ul {
+      width: 100%;
+
+      li {
+        margin-right: 2px;
+        padding: .5rem 1rem 0.5rem 1rem;
+        background-color: darken($greyBackground, 10);
+        color: $lightGreyTextBorder;
+
+        &:hover, &:hover { color: $white; }
+        &:hover { background-color: $redBackgroundHover; }
+        &:active { background-color: $redBackground; }
+
+        a { text-decoration: none; }
+
+        &.prev,
+        &.next {
+          float: right;
+
+          @media screen and (max-width: 767px) {
+            display: inline-block;
+            width: 50%;
+            text-align: center;
+            margin: .3rem 0 0 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* General styles for "card" of car and news on
+ * main page or last viewed/recommended cars at
+ * the bottom of pages. */
 .card {
   overflow: hidden;
   text-align: left;
@@ -621,7 +1435,44 @@ footer {
   }
 }
 
+
+/* Specifies styles for any tabled data of specs.
+ * You have to place header h2, for example, outside
+ * this block. See markup. */
+.specs {
+  &.two.columns {
+    @include column-count(2);
+
+    @media screen and (max-width: 767px) {
+      @include column-count(1);
+    }
+  }
+
+  .block {
+    text-transform: uppercase;
+
+    .name, .value {
+      display: inline-block;
+      min-width: 45%;
+    }
+  }
+}
+
+
+/* Styles for review side block with stars. */
 .review.block {
+  margin-top: $marginBlock;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 0;
+  }
+
+  .read.more {
+    color: $blueText;
+
+    &:hover { color: $blueTextHover; }
+  }
+
   .stars {
     /* the default rating is placed as a background image in the ul */
     /* use the background position according to the table above to display the required images*/
@@ -685,12 +1536,19 @@ footer {
   }
 }
 
+
+/* Facebook icon with Like action and company's name. */
 .facebook.block {
   $size: 1rem * 3;
 
   display: flex;
   float: right;
   min-height: $size;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 1rem;
+    margin-right: 2rem;
+  }
 
   .name {
     @extend .h2;
@@ -709,31 +1567,33 @@ footer {
   }
 }
 
-.video.block {
-  h2 { margin-bottom: $marginElement / 2; }
-}
 
-.slider.block {
+/* Gallery with thumbnails. */
+.gallery.block {
   margin-top: -.5rem;
 
+  @media screen and (min-width: 768px) {
+    margin-top: -1rem;
+  }
+
   .carousel {
-    &.gallery {
-      z-index: 100;
+    &.slider {
+      z-index: 2 !important;
 
       .cell { width: 100%; }
 
       button { visibility: hidden; }
 
-      @media screen and (max-width: 767px) {
-        button { visibility: visible; }
-      }
-
       &:hover button { visibility: visible; }
     }
 
     &.thumbnails {
-      z-index: 99;
-      margin-top: em(-$marginElement);
+      z-index: 1 !important;
+      margin-top: em(-$marginElement*2);
+
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
 
       .cell {
         width: 150px;
@@ -757,17 +1617,158 @@ footer {
           display: none;
         }
       }
+
+      button {
+        top: 57%;
+
+        @include border-top-radius(50% !important);
+        @include border-bottom-radius(50% !important);
+      }
     }
   }
 }
 
-#last-recommended {
+
+/* Gallery without thumbnails. */
+.simple.slider {
+  display: block;
+  position: relative;
+  overflow: visible;
+
+  @media screen and (max-width: 1199px) {
+    margin-top: 2rem;
+  }
+
+  .carousel {
+    .cell {
+      width: 100%;
+      margin-top: -1rem;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    & ~ .static.next.slide {
+      z-index: 400;
+      position: absolute;
+      right: 0;
+      bottom: -1rem;
+      padding: $paddingElement/2 $paddingElement $paddingElement/2 $paddingElement*1.7;
+      cursor: pointer;
+
+      @include user-select(none);
+
+      @media screen and (max-width: 1199px) {
+        display: none;
+      }
+    }
+  }
+}
+
+
+/* Block with any text content on the right column of a page. */
+.info.block {
+  margin-top: $marginBlock;
+
+  h2 { text-align: right; }
+
+  p {
+    &:first-of-type { margin-top: 0; }
+    &:last-of-type { margin-bottom: $marginElement/2; }
+  }
+}
+
+
+/* Button for reverting user to the top of a page. */
+.to.top.block {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  position: fixed;
+  right: 3rem;
+  bottom: 3rem;
+  padding: .3rem .5rem;
+  background-color: $greyBackground;
+  color: $white;
+  font-size: .7rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+
+  @include user-select(none);
+  @include transitionElement(background-color color);
+
+  &:hover { background-color: $greyBackgroundHover; }
+
+  i {
+    display: block;
+    width: auto;
+    font-size: 2rem;
+    margin: 0 0 -.5rem 0;
+  }
+}
+
+
+/* Block with car cards at the bottom of a page. */
+.last.recommended.block {
   padding: $paddingElement;
 
   @media screen and (max-width: 1199px) {
     padding: $paddingElement 0 0 0;
   }
+
+  h5 {
+    text-align: right;
+
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      margin-right: 1rem;
+    }
+  }
 }
+
+
+.video.block {
+  h2 { margin-bottom: $marginElement / 2; }
+}
+
+
+.currency.block {
+  font-size: .8rem !important;
+
+  img {
+    width: 1.2rem !important;
+    margin-right: .3rem !important;
+  }
+
+  .ui.menu .ui.dropdown .menu>.item {
+    padding: .5rem .6rem !important;
+  }
+
+  .menu {
+    font-size: .8rem !important;
+    box-shadow: none !important;
+    padding: 0 .1rem 0 .1rem !important;
+    margin-bottom: .3rem;
+
+    .item,
+    &.dropped .item {
+      padding: 0 .1rem 0 .3rem;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      i { margin: 0; }
+    }
+  }
+
+}
+
 
 // browser upgrade
 .browserupgrade {

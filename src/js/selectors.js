@@ -6,8 +6,23 @@
 
 // main menu dropdown action
 $('#header nav .dropdown').dropdown({
-    on: 'hover'
+    on: 'hover',
+    duration: 0,
+    delay: {
+        show: 0,
+        hide: 0
+    }
 });
+
+// currency menu
+$('.currency .dropdown').dropdown({
+    duration: 0,
+    delay: {
+        show: 0,
+        hide: 0
+    }
+});
+
 
 // search tabs actions
 $('#search-tabs .menu .item').tab();

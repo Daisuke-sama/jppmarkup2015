@@ -45,7 +45,13 @@
   text-align: center;
   text-transform: uppercase;
 
-  @media screen and (min-width: 768px) and (max-width: 1199px) {
+  @media screen and (min-width: 1200px) {
+    width: 1127px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  @media screen and (max-width: 1199px) {
     font-size: 1rem * 3;
   }
 
@@ -81,14 +87,20 @@
 
   @include transitionElement(color);
 
-  &:hover {
-    color: $lightGreyTextBorder;
-  }
-  &:active {
-    color: $yellowText !important;
-  }
+  &:hover { color: $lightGreyTextBorder; }
+  &:active { color: $yellowText !important; }
 }
 
+.list {
+  &.inline {
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+  }
+}
 
 // forms
 .button {
@@ -97,6 +109,9 @@
   color: inherit;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
+
+  @include user-select(none);
 
   &:hover {
     text-decoration: none;
@@ -110,7 +125,7 @@
 
   &.small {
     font-size: $em-base;
-    margin: $marginElement;
+    margin: $marginElement 0;
     padding: $paddingElement;
   }
 
@@ -149,6 +164,11 @@
 
   &.right.floated { float: right; }
   &.left.floated { float: left; }
+  &.centered {
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+  }
   &.fluid { width: 100%; }
   &.inline { display: inline-block; }
   &.margined { margin: $marginElement; }
@@ -159,9 +179,25 @@
     color: $white;
   }
 
-  &.border.bottom.px {
-    border-bottom: rgba($greyBackground, .25) 1px solid;
-    margin-bottom: 1em;
+  &.border {
+    &.dashed { border: 1px dashed $blackText; }
+
+    &.red { border-color: $redBackground; }
+
+    &.bottom.px {
+      border-bottom: rgba($greyBackground, .25) 1px solid;
+      margin-bottom: 1em;
+    }
+  }
+
+  &.white {
+    background-color: $white;
+  }
+
+  &.small.devices.vertically.reversed.columns {
+    @media screen and (max-width: 1199px) {
+      @include flex-direction(column-reverse);
+    }
   }
 }
 
@@ -172,7 +208,7 @@
   &-no-left { margin-left: 0 !important; }
   &-no-right { margin-right: 0 !important; }
 
-  &-no-by-side.mobile.only {
+  &-no-by-side.mobile {
     @media screen and (max-width: 767px) {
       margin-left: 0 !important;
       margin-right: 0 !important;
@@ -185,15 +221,34 @@
   &-no { padding: 0 !important; }
   &-no-top { padding-top: 0 !important; }
   &-no-bottom { padding-bottom: 0 !important; }
-  &-no-left:not(.mobile.only) { padding-left: 0 !important; }
-  &-no-right:not(.mobile.only) { padding-right: 0 !important; }
+  &-no-left:not(.mobile) { padding-left: 0 !important; }
+  &-no-right:not(.mobile) { padding-right: 0 !important; }
 
-  &-no-by-side.mobile.only {
+  &-no-by-side.mobile {
     @media screen and (max-width: 767px) {
       padding-left: 0 !important;
       padding-right: 0 !important;
     }
+
+    &.and.tablet {
+      @media screen and (max-width: 1199px) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
   }
+}
+
+.clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after { clear: both; }
 }
 
 // images

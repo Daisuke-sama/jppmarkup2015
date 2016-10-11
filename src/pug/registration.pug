@@ -1,0 +1,96 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 18-Aug-16.
+    http://rpr.by
+
+    FILE DESCRIPTION: Page with registration form.
+
+extends _layoutBase
+
+block pageTitle
+    title Registration page
+
+block allContent
+    .ui.container.page
+
+        // BREADCRUMBS
+        .breadcrumbs
+            ul.path
+                li: a(href='#') Home
+                li.active Registration
+
+        .ui.padded.stackable.grid
+            .eight.wide.column.padding-no-by-side.mobile.and.tablet
+
+                // REGISTRATION
+                .user.form.block
+                    .h1 Create your account
+                    form
+                        .ui.fluid.icon.input
+                            label(for='username-reg') Username
+                            input#username-reg(type='text' placeholder='Choose your username' required)
+                            i.asterisk.icon
+                        .ui.fluid.icon.input
+                            label(for='email-reg') Email
+                            input#email-reg(type='email' placeholder='Choose your email' required)
+                            i.asterisk.icon
+                        .ui.fluid.icon.input
+                            label(for='pwd-reg') Password
+                            input#pwd-reg(type='password' placeholder='Type wished password' required)
+                            i.asterisk.icon
+                        .ui.fluid.icon.input
+                            label(for='rpwd-reg') Repeat password
+                            input#rpwd-reg(type='password' placeholder='Repeat password' required)
+                            i.asterisk.icon
+                        .radio.input
+                            input#agreement(type='radio' required)
+                            label(for='agreement') I agree with website Terms, Privacy Policy, Licensing terms and recieve emails (can unsubscribe after registration in profile settings).
+                        button(type='submit') Sign up
+
+                // LOG IN FORM
+                .user.form.block
+                    .h1 Already have an account?
+                    form
+                        .ui.fluid.icon.input
+                            label(for='username') Username or Email
+                            input#username(type='text' placeholder='Type your username or email' required)
+                            i.asterisk.icon
+                        .ui.fluid.icon.input
+                            label(for='password') Password
+                                a.blue.lowercase.text.block(href='#') Forgot password?
+                            input#password(type='password' placeholder='Choose your password' required)
+                            i.asterisk.icon
+                        button(type='submit') Sign up
+
+                // RECOVER FORM
+                .user.form.block
+                    .h1 Forgot your password?
+                    p Enter your registration email and get the recover link in the inbox!
+                    form
+                        .ui.fluid.icon.input
+                            label(for='email-rec') Username or Email
+                            input#email-rec(type='email' placeholder='Type your email' required)
+                            i.asterisk.icon
+                        button(type='submit') Recover my password
+
+            .eight.wide.column
+
+                // DEMO OF USING
+                .user.form.block
+                    .h3 demonstration of types of input
+                    form
+                        .ui.fluid.icon.input
+                            label(for='need') If user has inputs something
+                            input.need#need(type='text' placeholder='Type, please!')
+                            i.asterisk.icon
+                        .ui.fluid.icon.input
+                            label(for='success') If user inputs all correct
+                            input.success#success(type='text' placeholder='Hey, you are correct!')
+                            i.plus.icon(class='green text')
+                        .ui.fluid.icon.input
+                            label(for='error') If user inputs something incorrect
+                            input.error#error(type='text' placeholder='ERROR!')
+                            i.asterisk.icon
+
+        .border.bottom.px.margin-no.block
+
+        include _component_last_recommend
