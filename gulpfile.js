@@ -172,6 +172,8 @@ gulp.task('copy-css-libs', function() {
         workData.cssVendorSrc + '022-tab.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/table.css',
         workData.cssVendorSrc + '023-table.css');
+    copyFile(workData.nodeLibs + 'semantic-ui-css/components/checkbox.css',
+        workData.cssVendorSrc + '024-checkbox.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/button.css',
         workData.cssVendorSrc + '029-buttons.css');
     copyFile(workData.nodeLibs + 'semantic-ui-css/components/icon.css',

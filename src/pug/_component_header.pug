@@ -74,18 +74,40 @@ header
                                 //.micro-mobile.only.mobile.only.tablet.only.computer.only.facebook.wrapper.block
                                 //    include _component_facebook
 
-                    .sixteen.wide.computer.nine.wide.large.screen.nine.wide.widescreen.column
+                    .sixteen.wide.computer.nine.wide.large.screen.nine.wide.widescreen.column.padding-no-left.padding-no-right
                         nav.ui.four.item.small.menu
+                            .ui.dropdown.item Complete pages
+                                .menu.gridest
+                                    .triangle.centered.block
+                                    .ui.two.column.equal.width.grid
+                                        .column.padding-no-right
+                                            a.item(href='index.html') Main page
+                                            a.item(href='stocklist.html') Stocklist
+                                            a.item(href='stockcar.html') Stock Car
+                                            a.item(href='auctioncar.html') Auction Car
+                                            a.item(href='registration.html') Registration
+                                            a.item(href='profile.html') Profile
+                                            a.item(href='blogpage.html') Blog page
+                                        .column.padding-no-left
+                                            a.item(href='index.html') Main page
+                                            a.item(href='stocklist.html') Stocklist
+                                            a.item(href='stockcar.html') Stock Car
+                                            a.item(href='auctioncar.html') Auction Car
+                                            a.item(href='registration.html') Registration
+                                            a.item(href='profile.html') Profile
+                                            a.item(href='blogpage.html') Blog page
                             .ui.dropdown.item Complete pages
                                 .menu
                                     .triangle.centered.block
-                                    a.item(href='index.html') Main page
-                                    a.item(href='stocklist.html') Stocklist
-                                    a.item(href='stockcar.html') Stock Car
-                                    a.item(href='auctioncar.html') Auction Car
-                                    a.item(href='registration.html') Registration
-                                    a.item(href='profile.html') Profile
-                                    a.item(href='blogpage.html') Blog page
-                            - for(var i = 1; i < 4; i++)
-                                a.ui.dropdown.item Menu Menu #{i+1}
-
+                                    - for(var i = 1; i < 16; i++)
+                                        a.item(href='index.html') Main pageasdasd asdas #{i + 1}
+                            .ui.dropdown.item Information & help
+                                .menu
+                                    .triangle.centered.block
+                                    - for(var i = 1; i < 16; i++)
+                                        a.item(href='index.html') Main page #{i + 1}
+                            .ui.dropdown.item Complete pages Here
+                                .menu
+                                    .triangle.centered.block
+                                    - for(var i = 1; i < 16; i++)
+                                        a.item(href='index.html') Main page #{i + 1}

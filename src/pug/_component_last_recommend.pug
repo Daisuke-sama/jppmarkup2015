@@ -6,14 +6,14 @@
 
 .last.recommended.block
     h5 last viewed vechicles
-    .ui.centered.stackable.grid.border.bottom.px.block
+    .ui.stackable.grid.border.bottom.px.block
         - for (var i = 1; i <= 3; i++)
             .five.wide.computer.four.wide.large.screen.four.wide.widescreen.column
                 include _component_car_vertical_card_mobile_transform
         .four.wide.large.screen.four.wide.widescreen.column.computer.or.lower.hidden
             include _component_car_vertical_card_mobile_transform
     h5 recommended used cars
-    .ui.centered.stackable.grid.border.bottom.px.block
+    .ui.stackable.grid.border.bottom.px.block
         - for (var i = 1; i <= 3; i++)
             .five.wide.computer.four.wide.large.screen.four.wide.widescreen.column
                 include _component_car_vertical_card_mobile_transform

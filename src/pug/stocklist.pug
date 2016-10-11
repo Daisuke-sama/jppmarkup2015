@@ -20,32 +20,27 @@ block allContent
                 ul.top.search.mobile.or.lower.hidden
                     +formix(1,6,'<li><a href=#>skyline</a></li>')
 
-            .ui.middle.aligned.padded.grid
-                .row
-
-                    // CARS
-                    .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column.padding-no-by-side.mobile
-                        .five.columns.dealers
-                            - for (var i = 1; i <= 50; i++)
-                                p: a(href='#') Bluebird Silphy #[span 123]
-
-                    .five.wide.column.computer.or.lower.hidden
-
-                        // GALLERY TOP
-                        include _component_simple_slider
-                        include _component_facebook
-
             .ui.padded.grid.small.devices.vertically.reversed.columns.block.margin-no-top.padding-no-top
                 .sixteen.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column.padding-no-by-side.mobile
+                    // CARS
+                    .row
+                        .dealers.block
+                            .ui.five.column.equal.width.doubling.grid
+                                - for (var i = 1; i <= 50; i++)
+                                    .column: p: a(href='#') Bluebird Silphy #[span #{120-i}]
 
                     // LIST OF CARS
                     include _component_cars_list
 
                 .sixteen.wide.computer.five.wide.large.screen.five.wide.widescreen.column.padding-no-by-side.mobile
 
+                    // GALLERY TOP
+                    include _component_simple_slider
+                    .left.floated.block
+                        include _component_facebook
+                    .clearfix
+
                     // SEARCH FORM
-                    .right.floated.overflow.block
-                        h2 find used cars
                     include _component_stock_search
 
                     .info.left.floated.block.computer.or.lower.hidden

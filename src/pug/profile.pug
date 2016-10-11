@@ -53,53 +53,55 @@ block allContent
                     .h3 profile settings
                     .settings.block
                         .user.form.block
-                            .h1 edit profile
                             form
-                                .ui.input.margin.to.label
-                                    .inline.block
-                                        input#isindividual(type='radio' checked)
-                                        label.inline.block(for='isindividual') Individual
-                                    .inline.block
-                                        input#iscompany(type='radio' checked)
-                                        label.inline.block(for='isindividual') Company
-                                .ui.fluid.input
-                                    label(for='companyname') Company name
-                                    input#companyname(type='text' placeholder='Type your company name')
-                                .ui.fluid.icon.input
-                                    label(for='uname') First name
-                                    input#uname(type='text' placeholder='Type your first name' required)
-                                    i.ui.asterisk.icon
-                                .ui.fluid.icon.input
-                                    label(for='surname') Surname
-                                    input#surname(type='text' placeholder='Type your surname' required)
-                                    i.ui.asterisk.icon
-                                button(type='submit') submit
+                                .h1 edit profile
+                                fieldset
+                                    .ui.input.margin.to.label
+                                        .inline.block
+                                            input#isindividual(type='radio' checked)
+                                            label.inline.block(for='isindividual') Individual
+                                        .inline.block
+                                            input#iscompany(type='radio' checked)
+                                            label.inline.block(for='isindividual') Company
+                                    .ui.checkbox
+                                        input#checkbox(type='checkbox' unchecked)
+                                        label(for='checkbox') ASLDKMASLDKASLDALS DLAKSDLKASLKD AKSDLK ADLKA LSKDLKASDLKA SDKLASLKD ALKDAKLSDKL ASLDKA LKSD
+                                    .ui.fluid.input
+                                        label(for='companyname') Company name
+                                        input#companyname(type='text' placeholder='Type your company name')
+                                    .ui.fluid.icon.input
+                                        label(for='uname') First name
+                                        input#uname(type='text' placeholder='Type your first name' required)
+                                        i.ui.asterisk.icon
+                                    .ui.fluid.icon.input
+                                        label(for='surname') Surname
+                                        input#surname(type='text' placeholder='Type your surname' required)
+                                        i.ui.asterisk.icon
 
-                        .user.form.block
-                            .h1 Billing address
-                            form
-                                .ui.fluid.icon.input
-                                    label(for='uaddress') Your address
-                                    input#uaddress(type='text' placeholder='Type your address' required)
-                                    i.ui.asterisk.icon
-                                .ui.fluid.icon.input
-                                    label(for='ucity') Your city
-                                    input#ucity(type='text' placeholder='Type your city' required)
-                                    i.ui.asterisk.icon
-                                .ui.fluid.icon.input
-                                    label(for='ustate') Your state
-                                    input#ustate(type='text' placeholder='Type your state' required)
-                                    i.ui.asterisk.icon
-                                .ui.fluid.icon.input
-                                    label(for='uzip') Your zip/postal code
-                                    input#uzip(type='text' placeholder='Type your zip/postal code' required)
-                                    i.ui.asterisk.icon
-                                .ui.fluid.icon.input
-                                    label(for='ucountry') Your country
-                                    select#ucountry
-                                        option Uganda
-                                        option USA
-                                        option Other
+                                .h1 Billing address
+                                fieldset
+                                    .ui.fluid.icon.input
+                                        label(for='uaddress') Your address
+                                        input#uaddress(type='text' placeholder='Type your address' required)
+                                        i.ui.asterisk.icon
+                                    .ui.fluid.icon.input
+                                        label(for='ucity') Your city
+                                        input#ucity(type='text' placeholder='Type your city' required)
+                                        i.ui.asterisk.icon
+                                    .ui.fluid.icon.input
+                                        label(for='ustate') Your state
+                                        input#ustate(type='text' placeholder='Type your state' required)
+                                        i.ui.asterisk.icon
+                                    .ui.fluid.icon.input
+                                        label(for='uzip') Your zip/postal code
+                                        input#uzip(type='text' placeholder='Type your zip/postal code' required)
+                                        i.ui.asterisk.icon
+                                    .ui.fluid.icon.input
+                                        label(for='ucountry') Your country
+                                        select#ucountry
+                                            option Uganda
+                                            option USA
+                                            option Other
                                 button(type='submit') submit
 
             .border.bottom.px.margin-no.block

@@ -139,9 +139,13 @@ block allContent
 
                         .blue.claim.block
                             .uppercase.text RELATED LINKS
-                            .links
-                                +formix(1,5,'<a href="#">How to import vehicle into the USA. FAQ</a>')
-                            i.info.icon
+                            .ui.grid
+                                .middle.alighed.row
+                                    .twelve.wide.column
+                                        .links
+                                            +formix(1,3,'<a href="#">How to import vehicle into the USA. FAQ</a>')
+                                    .four.wide.column
+                                        div: i.info.icon
 
                         .centered.block
                             include _component_facebook
