@@ -1,7 +1,3 @@
-# [Markup of japan-partner.com](http://japan-partner.com)
-
-Here some notes about a project, which describes how to edit and compile it.
-
 ## Dependecies
 For building and changing you have to install:
 1. [NodeJS](http://nodejs.org) - npm shell commands are used.
