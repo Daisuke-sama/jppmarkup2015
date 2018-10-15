@@ -13,6 +13,19 @@
 html {
     body {
         position: relative;
+
+        .lity-opened {
+            background: transparent;
+
+            .lity-content {
+                background: white;
+                padding: 3rem;
+            }
+
+            .lity-close {
+                position: absolute;
+            }
+        }
     }
 
     font-family: $helvetica;
@@ -279,6 +292,10 @@ header {
                             .triangle.centered.block {
                                 display: none;
                             }
+
+                            & .item:first-of-type {
+                                margin-top: 0;
+                            }
                         }
 
                         .triangle.centered.block {
@@ -296,7 +313,7 @@ header {
                             }
                         }
 
-                        & > .item {
+                        & .item {
                             text-transform: capitalize;
 
                             &:first-of-type {
@@ -357,71 +374,6 @@ footer {
     h5,
     h6 {
         text-align: right;
-    }
-
-    #search-tabs {
-        .ui.menu {
-            border-bottom: none !important;
-            min-height: 1rem;
-            background-color: $pageGreyBackground;
-
-            @media screen and (max-width: 1199px) {
-                background-color: $white;
-            }
-
-            .item {
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
-                border: none !important;
-                border-top-right-radius: 1rem !important;
-
-                @media screen and (max-width: 767px) {
-                    padding: 0.5rem 0.5rem;
-                }
-
-                &:hover {
-                    background-color: $white;
-                }
-                &:active {
-                    color: $blackText !important;
-                }
-            }
-
-            .active.item {
-                background-color: $white;
-            }
-
-            .grey1 {
-                background-color: $pageGreyBackground;
-            }
-            .grey2 {
-                background-color: lighten($lightGreyBackground, 10%);
-            }
-            .grey3 {
-                background-color: $lightGreyBackground;
-            }
-        }
-
-        .tab {
-            padding: 0 $paddingBlock $paddingBlock $paddingBlock;
-            background-color: $white;
-
-            .dealers.five.columns {
-                @media screen and (min-width: 1199px) {
-                    margin-left: -1rem;
-                    margin-right: -1rem;
-                }
-            }
-
-            @media screen and (min-width: 768px) and (max-width: 1199px) {
-                padding-top: $paddingBlock;
-                padding-bottom: 0;
-            }
-
-            @media screen and (max-width: 767px) {
-                padding: 0;
-            }
-        }
     }
 
     .banners {
@@ -546,7 +498,8 @@ footer {
 
 /* Stock list page and blog page general styles. */
 #stocklist,
-#blogpage {
+#blogpage,
+#auctionlist {
     h1,
     h2 {
         font-weight: bold;
@@ -722,7 +675,6 @@ footer {
 
 /* Profile page styles. */
 #profile {
-
     .settings.block {
         .user.form.block {
 
@@ -784,6 +736,255 @@ footer {
     }
 }
 
+
+#auctionlist {
+    .list.wrapper {
+        @media screen and (max-width: 1199px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .description.content {
+        padding-right: 0;
+    }
+
+    .links.content {
+        padding-left: 0;
+    }
+
+    .description.content,
+    .links.content {
+        @media screen and (max-width: 1199px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    #search-tabs {
+        .menu.links {
+            margin-bottom: -1rem;
+            background: white;
+
+            @media screen and (min-width: 768px) and (max-width: 1199px) {
+                margin-bottom: -2rem;
+            }
+
+            .item {
+                display: inline-block;
+                padding: 0.5rem 1rem;
+            }
+        }
+    }
+
+    .buttons.block {
+        border: 1px solid $lightGreyBackground;
+        border-bottom: none;
+
+        .button {
+            display: block;
+            font-weight: normal;
+            padding: 0.7rem 0 0.7rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid $lightGreyBackground;
+        }
+    }
+
+    #perpage { margin-left: 2rem; }
+
+    .cars.list.block {
+        .listing {
+            .car {
+                margin-right: 0;
+                font-size: 0.9rem;
+                overflow: hidden;
+
+                .column.data {
+                    padding-right: 0;
+                    padding-bottom: 0;
+                }
+
+                .img.block {
+                    width: 100%;
+
+                    .img-clip-4by3 {
+                        display: inline-block;
+                        width: 49%;
+                    }
+                }
+
+                .stockno {
+                    margin-top: 0;
+
+                    @media screen and (max-width: 767px) {
+                        margin-top: -1rem;
+                    }
+
+                    .date {
+                        margin-left: 1rem;
+                    }
+                }
+
+                .name {
+                    margin-top: 0.5rem;
+                    font-size: 1.5rem;
+                    font-weight: normal;
+                    color: inherit;
+
+                    @media screen and (max-width: 1199px) {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                .characteristics {
+                    font-size: 0.8rem;
+                    line-height: 1rem;
+                    position: relative;
+                    
+                    @media screen and (max-width: 1199px) {
+                        font-size: 0.7rem;
+                        line-height: .9rem;
+                    }
+
+                    @media screen and (max-width: 767px) {
+                        margin-left: 0;
+                    }
+
+                    .table {
+                        margin-top: 1rem;
+                        bottom: 0;
+
+                        @media screen and (max-width: 1199px) {
+                            margin-top: 0;
+                        }
+
+                        td {
+                            max-width: 33%;
+
+                            @media screen and (max-width: 767px) {
+                                margin-right: .5rem;
+                            }
+
+                            &.value {
+                                float: left;
+                                font-weight: bold;
+
+                                @media screen and (max-width: 767px) {
+                                    float: right;
+                                }
+                            }
+                        }
+
+                        .img.info {
+                            width: 45px;
+
+                            @media screen and (max-width: 1199px) {
+                                width: 35px;
+                            }
+                        }
+                    }
+                }
+
+                .score {
+                    .star {
+                        color: $greyBackgroundHover;
+                        font-size: 1.5rem;
+
+                        &.active > i {
+                            color: $yellowText ;
+                        }
+                    }
+                }
+
+                .bidding {
+                    @media screen and (max-width: 1199px) {
+                        padding-top: 0;
+                    }
+
+                    .characteristics {
+                        float: right;
+                    }
+
+                    .bid {
+                        @media screen and (max-width: 1199px) {
+                            display: inline-block;
+                            float: left;
+                        }
+
+                        .input {
+                            display: inline-block;
+                            width: 75%;
+                            font-size: 1.5rem;
+                            border: 2px solid $blackText;
+                            padding-left: 1rem;
+
+                            @media screen and (max-width: 1199px) {
+                                font-size: 1rem;
+                            }
+
+                            @media screen and (max-width: 767px) {
+                                width: 75%;
+                            }
+
+                            input {
+                                padding: .6rem 0 .7rem 1rem;
+                                width: 76%;
+                                display: inline-block;
+                                text-align: right;
+                                border: none;
+
+                                @media screen and (max-width: 320px) {
+                                    width: 70%;
+                                }
+
+                                @media screen and (min-width: 1200px) {
+                                    width: 60%;
+                                }
+                            }
+                        }
+
+                        .button {
+                            padding: 1rem;
+                            margin: 0;
+
+                            @media screen and (max-width: 1199px) {
+                                margin-top: 0.2rem;
+                                padding: .5rem 1rem .9rem 1rem;
+                            }
+
+                            &:hover {
+                                background-color: $greenBackground;
+                            }
+                        }
+                    }
+
+                    .bid ~ .characteristics {
+                        display: inline-block;
+
+                        @media screen and (max-width: 1199px) {
+                            float: left;
+                            margin-top: 0.2rem;
+                            margin-left: 1rem;
+                        }
+
+                        @media screen and (max-width: 767px) {
+                            margin-left: 0;
+                        }
+
+                        .table {
+                            .hide.lower.devices {
+                                @media screen and (max-width: 1199px) {
+                                    display: none !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 /**************************************
  * STYLES FOR A FEW TIME USED BLOCKS. */
 
@@ -792,8 +993,257 @@ footer {
     background-color: $white;
 }
 
+/* Describes search tabs. */
+#search-tabs {
+    .menu {
+        border: none !important;
+        min-height: 1rem;
+        background-color: $pageGreyBackground;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+
+        @media screen and (max-width: 1199px) {
+            background-color: $white;
+        }
+
+        .item {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            border: none !important;
+            border-top-right-radius: 1rem !important;
+
+            @media screen and (max-width: 767px) {
+                padding: 0.5rem 0.5rem;
+            }
+
+            &:hover {
+                background-color: $white;
+            }
+            &:active {
+                color: $blackText !important;
+            }
+        }
+
+        .active.item {
+            background-color: $white;
+        }
+
+        .grey1 {
+            background-color: $pageGreyBackground;
+        }
+        .grey2 {
+            background-color: lighten($lightGreyBackground, 10%);
+        }
+        .grey3 {
+            background-color: $lightGreyBackground;
+        }
+    }
+
+    .tab {
+        padding: 0 $paddingBlock $paddingBlock $paddingBlock;
+        background-color: $white;
+
+        .dealers.five.columns {
+            @media screen and (min-width: 1199px) {
+                margin-left: -1rem;
+                margin-right: -1rem;
+            }
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1199px) {
+            padding-top: $paddingBlock;
+            padding-bottom: 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            padding: 0;
+        }
+    }
+}
+
+/* Describes auction forms. */
+#auform {
+    background-color: $veryLightGreyBackground;
+
+    form {
+        padding: 0 1rem 1rem 1rem;
+
+        .simple.dropdown {
+            display: inline-block;
+            border: 1px solid $lightGreyTextBorder;
+            padding: 1rem;
+            background-color: white;
+
+            @media screen and (max-width: 1199px) {
+                padding: 0.7rem 1rem;
+            }
+
+            .title {
+                display: inline-block;
+                max-width: 80%;
+            }
+
+            i.icon {
+                margin-left: 0;
+                font-size: 1.2rem;
+                float: right;
+            }
+
+            .menu {
+                width: 100%;
+                max-height: 23rem;
+                overflow-y: auto;
+                background-color: $white;
+                border-radius: 0;
+
+                .item label:hover {
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        #days {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid $greyText;
+
+            .simple.dropdown {
+                @media screen and (min-width: 1200px) { width: calc(100% / 6 - 0.3rem); }
+                @media screen and (min-width: 768px) and (max-width: 1199px) { width: calc(100% / 4 - 0.3rem); }
+                @media screen and (max-width: 767px) {
+                    width: calc(100% / 2 - 0.3rem);
+                    padding: 0.5rem;
+                }
+            }
+        }
+        
+        #details {
+            .column {
+                &:not(:nth-last-of-type(2)) {
+                    @media screen and(max-width: 767px) {
+                        padding-bottom: 0 !important;
+                    }
+                }
+
+                &:nth-of-type(3n-2) {
+                    @media (min-width: 1024px) {
+                        padding-right: 0;
+                    }
+                }
+
+                &:nth-of-type(3n-1) {
+                    @media (min-width: 1024px) {
+                        padding-right: 0;
+                    }
+                }
+            }
+
+            .input {
+                margin-bottom: 0;
+
+                label {
+                    margin-right: 1rem;
+
+                    @media screen and (max-width: 767px) {
+                        font-size: .8rem;
+                        padding-top: 0.8rem;
+                    }
+
+                    @media (min-width: 1024px) and (max-width: 1199px) and (orientation: landscape) {
+                        font-size: .8rem;
+                        padding-top: 0.8rem;
+                    }
+
+                    &.short {
+                        width: auto;
+
+                        @media screen and (max-width: 767px) {
+                            margin-right: .5rem;
+                        }
+                    }
+                }
+
+                input {
+                    margin-right: 1rem;
+                    @media screen and (max-width: 767px) {
+                        padding: 0.5rem;
+                        margin-right: 0.5rem;
+                    }
+                }
+
+                .simple.dropdown {
+                    width: 100%;
+                    padding: 0.67861429em 1em;
+
+                    label {
+                        padding: 0 1rem 0 2rem;
+                    }
+                }
+            }
+
+            .action.buttons {
+                @media screen and (max-width: 767px) {
+                    margin: 0 -1rem 0 -1rem;
+                }
+
+                .button {
+                    @media screen and (max-width: 1199px) {
+                        float: left;
+                        margin-left: 0.6rem;
+                    }
+                }
+
+                i.icon {
+                    margin: -0.05rem 0.5rem 0 0 ;
+                }
+            }
+        }
+    }
+
+    #summary {
+        .radio.checkbox {
+            margin-left: 1rem;
+        }
+
+        #countries {
+            margin-left: 3rem;
+            width: 250px;
+
+            @media screen and (max-width: 767px) {
+                margin: 1rem 0 0 1rem;
+            }
+        }
+    }
+}
+
+/* Describes popup form in auctiolist. */
+#confirmation {
+    text-align: center;
+
+    .stockno {
+        margin-bottom: 1rem;
+    }
+
+    .checkbox {
+        margin-top: 1rem;
+
+        label {
+            cursor: pointer;
+        }
+    }
+
+    .button {
+        margin-top: 2rem;
+        margin-bottom: 0;
+        border: none;
+    }
+}
+
 /* Describes styles for inputs on user page. */
-.user.form.block {
+.user.form.block,
+#auform {
     margin: 1rem 0 0 0;
 
     .h1 {
@@ -1383,7 +1833,6 @@ footer {
                             display: inline-block !important;
                             width: 100% !important;
                         }
-
                     }
 
                     td {

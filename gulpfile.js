@@ -49,7 +49,12 @@ gulp.task('default', ['watch']);
 /* WATCHES */
 gulp.task('watch', function () {
     livereload.listen();
-    gulp.start(['fincss', 'toHtml', 'finjs']);
+    gulp.start(['toHtml', 'fromSass', 'fromVenCss', 'finjs']);
+});
+
+gulp.task('watchfin', function () {
+    livereload.listen();
+    gulp.start(['toHtml', 'fincss', 'finjs']);
 });
 
 /* WATCHING TASKS */
@@ -96,7 +101,7 @@ gulp.task('fincss', function () {
         var convertFromScssToCssAndConcat =
             gulp.src(workData.sassSrcFiles)
                 .pipe(plumber({errorHandler: function(error) {
-                     convertFromScssToCssAndConcat.emit('end')  // important
+                     convertFromScssToCssAndConcat.emit('end');// important
                  }}))
                 .pipe(sass());
 
@@ -130,21 +135,25 @@ gulp.task('finjs', ['copy-direct'], function () {
 
 /* SINGLETONE TASKS */
 gulp.task('fromVenCss', function () {
-    return gulp.src(workData.cssVendorSrcFiles)
-        .pipe(plumber(error))
-        .pipe(concat('vendors.min.css'))
-        .pipe(uglifycss({uglyComments: true}))
-        .pipe(gulp.dest(workData.cssDest))
-        .pipe(livereload());
+    watch(workData.cssVendorSrcFiles, {}, function () {
+        return gulp.src(workData.cssVendorSrcFiles)
+            .pipe(plumber(error))
+            .pipe(concat('vendors.css'))
+            //.pipe(uglifycss({uglyComments: true}))
+            .pipe(gulp.dest(workData.cssDest))
+            .pipe(livereload());
+    });
 });
 
 gulp.task('fromSass', function () {
-    return gulp.src(workData.sassSrcFiles)
-        .pipe(plumber(error))
-        .pipe(sass())
-        .pipe(concat('my.css'))
-        .pipe(gulp.dest(workData.cssDest))
-        .pipe(livereload());
+    watch(workData.sassSrcFiles, {}, function () {
+        return gulp.src(workData.sassSrcFiles)
+            .pipe(plumber(error))
+            .pipe(sass())
+            .pipe(concat('final.css'))
+            .pipe(gulp.dest(workData.cssDest))
+            .pipe(livereload());
+    })
 });
 
 gulp.task('copy-css-libs', function() {

@@ -64,6 +64,7 @@
   &.black { color: $blackText; }
   &.white { color: $white; }
   &.yellow { color: $yellowText; }
+  &.green { color: $greenBackgroundHover; }
   &.blue { color: $blueText; }
   &.red { color: $redText; }
   &.grey {
@@ -152,6 +153,14 @@
     @include transitionElement(background-color);
 
     &:hover { background-color: $redBackgroundHover; }
+  }
+
+  &.grey {
+    background-color: $greyText;
+    color: $white;
+    @include transitionElement(background-color);
+
+    &:hover { background-color: $greenBackgroundHover; }
   }
 }
 

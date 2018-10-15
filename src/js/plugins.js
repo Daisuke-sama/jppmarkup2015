@@ -68,4 +68,9 @@ $(document).ready(function () {
             $('.lity').clone();
         });
     }
+
+
+    $('#countries')
+        .dropdown()
+    ;
 });

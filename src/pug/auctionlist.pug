@@ -1,0 +1,217 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 04-Nov-16.
+    http://rpr.by
+
+    Template of the auction list page.
+
+extends _layoutBase
+
+block pageTitle
+    title this is an auction list
+
+block allContent
+    #auctionlist
+        .ui.container.page
+
+            // BREADCRUMBS
+            .breadcrumbs.block
+                ul.path
+                    li: a(href='#') Japanese used cars
+                    li.active: a(href='#') Nissan
+
+            .ui.grid
+                .row
+                    .sixteen.wide.mobile.nine.wide.tablet.ten.wide.computer.eleven.wide.large.screen.eleven.wide.widescreen.column
+                        .description.content.padded.block
+                            h1 User Car Auction
+                            p We are glad to offer our customers access to 191+ auction houses in Japan. Our auction system allows you to place your proxy bids and win cars.
+                            p In order to be able place bids we require a money deposit of approximately 30% of car price that will guarantee that you will buy out the car.
+                            p Your auction membership status: #[b MEMBER], deposit: #[b $5,000], JP fee per vehicle: #[b $500]
+                            br
+                            .green.button.padded.block.h1.text.uppercase Get Full Access
+
+                    .sixteen.wide.mobile.seven.wide.tablet.six.wide.computer.five.wide.large.screen.five.wide.widescreen.column
+                        .links.content.padded.block
+                            .buttons.block
+                                a.button(href="#") Used cars auction expalined
+                                a.button(href="#") Final price calculation
+                                a.button(href="#") How to read auction sheet
+                                a.button(href="#") Purchase and shipping
+                                a.button(href="#") Used cars auction expalined
+                                a.button(href="#") Used cars auction expalined
+
+                .row.padding-no-top
+                    .sixteen.wide.column.padding-no-by-side.mobile
+                        #search-tabs
+                            .menu.links
+                                a.grey1.active.item(href="#") auction search
+                                a.grey2.item(href="#") my bids
+                                a.grey3.item(href="#") saved searches
+                                a.grey3.item(href="#") watchlist
+                                a.grey3.item(href="#") sales history
+
+                            .tab.active.padding-no-left.padding-no-right
+                                    #auform
+                                        .padded.block.text.centered Select auction days and auction houses
+                                        form
+                                            #days
+                                                include _component_aulist_dropdowndays
+                                                include _component_aulist_dropdowndays
+                                                include _component_aulist_dropdowndays
+                                                include _component_aulist_dropdowndays
+                                                include _component_aulist_dropdowndays
+                                                include _component_aulist_dropdowndays
+                                            #details
+                                                .ui.three.column.equal.width.doubling.stackable.grid
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(for='make') Make
+                                                            include _component_aulist_dropdowndays
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(for='model') Model
+                                                            include _component_aulist_dropdowndays
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(for='lotid') Lot ID
+                                                            input#lotid(type='text' placeholder='Type your company name')
+                                                            label.short.padding-no-right(for='lotid2') -
+                                                            input#lotid2.margin-no-right(type='text' placeholder='Type your company name')
+
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(for='year') Year
+                                                            input#year(type='text' placeholder='Type your company name')
+                                                            label.short.padding-no-right(for='year2') -
+                                                            input#year2.margin-no-right(type='text' placeholder='Type your company name')
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(for='disp1') Displacement
+                                                            input#disp1(type='text' placeholder='Type your company name')
+                                                            label.short.padding-no-right(for='disp2') -
+                                                            input#disp2.margin-no-right(type='text' placeholder='Type your company name')
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(for='mileage') Mileage
+                                                            input#mileage(type='text' placeholder='Type your company name')
+                                                            label.short.padding-no-right(for='mileage2') -
+                                                            input#mileage2.margin-no-right(type='text' placeholder='Type your company name')
+
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(for='price') Start price
+                                                            input#price(type='text' placeholder='Type your company name')
+                                                            label.short.padding-no-right(for='price2') -
+                                                            input#price2.margin-no-right(type='text' placeholder='Type your company name')
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(for='types') Types
+                                                            include _component_aulist_dropdowndays
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(style="width:53%" for='condition') Condition
+                                                            include _component_aulist_dropdowndays
+
+                                                    .column.padding-no-bottom
+                                                        .ui.fluid.input
+                                                            label(for='color') Color
+                                                            include _component_aulist_dropdowndays
+                                                    .column
+                                                        .ui.fluid.input
+                                                            label(for='types') Grades
+                                                            include _component_aulist_dropdowndays
+                                                    .column
+                                                        .ui.fluid.input
+                                                            label(for='condition') Transmission
+                                                            include _component_aulist_dropdowndays
+
+                                                    .sixteen.wide.mobile.nine.wide.tablet.six.wide.computer.five.wide.large.screen.centered.column
+                                                        .action.buttons
+                                                            button.ui.icon.grey.button.text.uppercase.right.floated.block
+                                                                i.save.icon
+                                                                | Save
+                                                            button.ui.icon.grey.button.text.uppercase.right.floated.block
+                                                                | Reset
+                                                            button.ui.icon.button.green.text.uppercase.right.floated.block
+                                                                i.search.icon
+                                                                | Search
+
+
+
+                                        #summary.padded.block
+                                            .inline.block TOTAL price includes:
+                                            .ui.radio.checkbox
+                                                input#allfees(type='radio' name="total" checked)
+                                                label(for='allfees') Bid and #[u all fees]
+                                            .ui.radio.checkbox
+                                                input(type='radio' name="total")
+                                                label Bid, all fees and #[u dismantling]
+                                            .ui.radio.checkbox
+                                                input(type='radio' name="total")
+                                                label Bid, all fees and #[u shipping to my port]
+                                            .inline.block
+                                                include _component_country_selection
+
+
+            .list.wrapper.padded.block.padding-no-by-side.mobile
+                .left.floated.block
+                    .inline.block
+                        h1 Search results
+                    #perpage.inline.block Lots per page
+                        select.inline.block
+                            option 50
+                            option 100
+                .right.floated.block
+                    include _component_currency
+                .clearfix
+
+                .cars.list.block
+                    .toolbar.mobile.or.lower.hidden
+                        .heading Sorting options
+                        ul.options.inline.list
+                            li.option
+                                | Grade
+                                a(href=''): i.ui.icon.caret.up
+                                a(href=''): i.ui.icon.caret.down
+                            li.option
+                                | Price
+                                a(href=''): i.ui.icon.caret.up
+                                a(href=''): i.ui.icon.caret.down
+                            li.option
+                                | Year
+                                a(href=''): i.ui.icon.caret.up
+                                a(href=''): i.ui.icon.caret.down
+                            li.option
+                                | Steer.
+                                a(href=''): i.ui.icon.caret.up
+                                a(href=''): i.ui.icon.caret.down
+                            li.option
+                                | Displ.
+                                a(href=''): i.ui.icon.caret.up
+                                a(href=''): i.ui.icon.caret.down
+                            li.option
+                                | Mileage
+                                a(href=''): i.ui.icon.caret.up
+                                a(href=''): i.ui.icon.caret.down
+
+                    .listing
+                        include _component_car_from_aulist
+                        include _component_car_from_aulist
+                        include _component_car_from_aulist
+                        include _component_car_from_aulist
+                        include _component_car_from_aulist
+
+                    include _component_pagination
+
+        #confirmation.lity-hide
+            .stockno Honda Nagoya #54555
+            .h1 Your bid is ¥ 1250000
+            p including all fees* and dismantling: $18,090
+            form
+                .block
+                    label(for="comment") Comment:
+                    input.inline.block#comment(type="text")
+                .ui.checkbox.block
+                    input(type="checkbox" id="agree")
+                    label(for="agree") I am a checkbox
+                button.h1.fluid.small.green.button Confirm

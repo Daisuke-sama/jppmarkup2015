@@ -1,0 +1,96 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 07-Nov-16.
+    http://rpr.by
+
+.car
+    .ui.grid.margin-no-bottom.margin-no-right
+        .sixteen.wide.mobile.eight.wide.tablet.seven.wide.computer.six.wide.large.screen.six.wide.widescreen.column.data
+            .img.left.floated.overflow.block
+                .img-clip-4by3
+                    img(src='img/auto6.jpg')
+                .img-clip-4by3
+                    img(src='img/auto5.jpg')
+
+        .sixteen.wide.mobile.eight.wide.tablet.nine.wide.computer.six.wide.large.screen.six.wide.widescreen.column.data
+            .ui.centered.middle.aligned.grid
+                .fourteen.wide.column
+                    .stockno Honda Nagoya #54555
+                        span.date Oct 10, 10:00
+                    .name TOYOTA COROLLA FIELDER
+                    .spec.info S W Ver.HIDｾﾚｸｼｮﾝI
+                    .characteristics
+                        table.table
+                            tr
+                                td
+                                    img.img.info(src="img/auction-item-description.jpg")
+                                td
+                                    table
+                                        tr
+                                            td.type Year
+                                            td.value 2002
+                                        tr
+                                            td.type Mileage
+                                            td.value 30000
+                                        tr
+                                            td.type Mileage
+                                            td.value 65000
+                                        tr
+                                            td.type Mileage
+                                            td.value 65000
+                                td
+                                    table
+                                        tr
+                                            td.type Type
+                                            td.value BNR34
+                                        tr
+                                            td.type Engine
+                                            td.value RB26
+                                        tr
+                                            td.type Displ.
+                                            td.value 2600cc
+                                        tr
+                                            td.type Mileage
+                                            td.value 65000
+                .two.wide.column.padding-no-left
+                    .score
+                        .h1.red.text 3.5
+                        .h1.blue.text 3.5
+                        .h1.green.text 3.5
+                        .star
+                            i.h1.star.icon
+                        .star.active
+                            i.h1.star.icon
+
+        .bidding.sixteen.wide.four.wide.large.screen.four.wide.widescreen.column.padding-no-right.padding-no-bottom
+            .bid
+                .input
+                    span ¥
+                    input#bid(type="text" placeholder="Your bid")
+                    span 0000
+                .inline.block
+                    a.h1.medium.grey.button(href="#confirmation" data-lity) bid
+
+            .characteristics
+                table.table
+                    tr
+                        td.type Start
+                        td.value $15480
+                    tr
+                        td.type Your bid
+                        td.value $0
+                    tr
+                        td.type Total
+                        td.value $25480
+                    tr.hide.lower.devices: td &nbsp;
+                    tr.hide.lower.devices: td &nbsp;
+                    tr.computer.or.lower.hidden
+                        td.type Average
+                        td.value $11250
+
+            .characteristics.tablet.only.computer.only
+                table
+                    tr: td &nbsp;
+                    tr: td &nbsp;
+                    tr
+                        td.type Average
+                        td.value $11250

@@ -1,0 +1,14 @@
+//-
+   Created by Royal PR (Paul Burilichev) on 05-Nov-16.
+    http://rpr.by
+
+.pagination
+    ul.inline.list
+        +formix(1,6,'<a href="#"><li>#</li></a>')
+        a(href='#')
+            li.next Next
+                i.ui.icon.chevron.right
+        a(href='#')
+            li.prev
+                i.ui.icon.chevron.left
+                | Previous

@@ -90,16 +90,7 @@
         - for (var i = 0; i <= 9; i++)
             include _component_car_from_stocklist
 
-    .pagination
-        ul.inline.list
-            +formix(1,6,'<a href="#"><li>#</li></a>')
-            a(href='#')
-                li.next Next
-                    i.ui.icon.chevron.right
-            a(href='#')
-                li.prev
-                    i.ui.icon.chevron.left
-                    |Previous
+    include _component_pagination
 
     // GALLERY TABLET MOBILE
     .widescreen.hidden.large.screen.hidden
